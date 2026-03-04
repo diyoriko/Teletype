@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teletype Landing 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="top-nav">
+      <div class="nav-shell">
+        <div class="nav-left-pill">
+          <a class="brand" href="#">
+            <img src="https://www.figma.com/api/mcp/asset/636c1ac9-1f08-48f7-8bc5-5219bd55df4f" alt="Teletype" />
+          </a>
+          <nav class="menu">
+            <a href="#products">Функции</a>
+            <a href="#prices">Тарифы</a>
+            <a href="#cases">Клиенты</a>
+            <a href="#corporate">Корпорациям</a>
+            <a href="#footer">Помощь</a>
+          </nav>
+        </div>
+        <div class="nav-actions">
+          <button class="btn btn-ghost">Войти</button>
+          <button class="btn btn-dark">Попробовать</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-inner">
+          <span class="badge">Новое</span>
+          <h1>AI помогает оператору отвечать быстрее</h1>
+
+          <div class="mockup">
+            <aside class="mockup-sidebar">
+              <h3>FloraDelivery</h3>
+              <ul>
+                <li class="active">Назначенные <b>7</b></li>
+                <li>Неотвеченные <b>1</b></li>
+                <li>Открытые <b>95</b></li>
+                <li>Все <b>102</b></li>
+              </ul>
+            </aside>
+            <div class="mockup-list">
+              <div class="chat-row"><span class="dot"></span> Юлия Боровикова</div>
+              <div class="chat-row"><span class="dot"></span> Салатовый кит...</div>
+              <div class="chat-row"><span class="dot"></span> Диана Рабович</div>
+              <div class="chat-row"><span class="dot"></span> Steven Sanchez</div>
+            </div>
+            <div class="mockup-chat">
+              <div class="bubble">Привет...</div>
+              <div class="composer">
+                <input type="text" value="Ответ" aria-label="Сообщение" />
+                <button>Отправить</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-dark btn-hero">Телетайп с AI</button>
+          <p class="hero-note">Мы всё настроим. Вы попробуете бесплатно, без привязки карты.</p>
+        </div>
+      </section>
+
+      <section class="products" id="products">
+        <div class="container">
+          <h2>Телетайп — облачный диалог-центр.</h2>
+          <p>Мы собрали мессенджеры и соцсети в одном окне, подключили AI, добавили аналитику, интеграции и инструменты для маркетинга</p>
+
+          <div class="product-grid">
+            <article class="card tall"><h3>Рассылки</h3><div class="placeholder"></div></article>
+            <article class="card"><h3>Диалог-центр</h3><div class="lines"></div></article>
+            <article class="card"><h3>Каналы</h3><div class="icons">TG WA VK</div></article>
+            <article class="card"><h3>AI-помощник</h3><div class="placeholder"></div></article>
+            <article class="card"><h3>Сервисные диалоги</h3><div class="line-wide"></div></article>
+            <article class="card brand-card"><h3>Teletype</h3></article>
+            <article class="card"><h3>Аналитика</h3><div class="chart"></div></article>
+            <article class="card"><h3>API и вебхуки</h3><code>POST /webhook { event: "message.received" }</code></article>
+            <article class="card"><h3>Интеграции</h3><div class="chips"><span>amoCRM</span><span>Bitrix24</span><span>Retail</span></div></article>
+            <article class="card"><h3>AI берет на себя до 80% диалогов</h3></article>
+          </div>
+
+          <button class="btn btn-dark">Все функции</button>
+        </div>
+      </section>
+
+      <section class="cases" id="cases">
+        <div class="container">
+          <h2>Телетайп подходит командам от стартапов до корпораций</h2>
+          <div class="case-tabs" data-case-tabs>
+            <button class="active" data-filter="all">Все</button>
+            <button data-filter="saas">SaaS</button>
+            <button data-filter="retail">Ритейл</button>
+            <button data-filter="delivery">Доставка</button>
+            <button data-filter="travel">Путешествия</button>
+            <button data-filter="education">Образование</button>
+          </div>
+
+          <div class="case-grid" data-case-grid>
+            <article class="case-card feature" data-tag="saas retail">
+              <h3>Модульбанк</h3>
+              <p>Онлайн-банк для предпринимателей и малого бизнеса с фокусом на цифровые сервисы.</p>
+              <img src="https://www.figma.com/api/mcp/asset/34be686e-68d6-4dd4-8104-5be039f94ae7" alt="Команда" />
+            </article>
+            <article class="case-card" data-tag="delivery">
+              <h3>CDEK</h3>
+              <p>Международная логистическая компания, специализирующаяся на доставке.</p>
+            </article>
+            <article class="case-card" data-tag="retail">
+              <h3>X5</h3>
+              <p>Одна из крупнейших розничных компаний.</p>
+            </article>
+            <article class="case-card" data-tag="saas">
+              <h3>Самолет</h3>
+              <p>Федеральный девелопер жилой недвижимости.</p>
+            </article>
+            <article class="case-card" data-tag="delivery">
+              <h3>Flora Delivery</h3>
+              <p>Сервис доставки цветов с поддержкой клиентов.</p>
+            </article>
+            <article class="case-card" data-tag="delivery">
+              <h3>Яндекс Еда</h3>
+              <p>Автоматизация заказов и коммуникаций в доставке еды.</p>
+            </article>
+            <article class="case-card" data-tag="retail">
+              <h3>Ашан</h3>
+              <p>Международная розничная сеть гипермаркетов.</p>
+            </article>
+            <article class="case-card" data-tag="travel">
+              <h3>Coral Travel</h3>
+              <p>Организация путешествий и отдыха.</p>
+            </article>
+            <article class="case-card" data-tag="retail delivery">
+              <h3>Flor2u.ru</h3>
+              <p>Онлайн-магазин цветов с клиентской поддержкой.</p>
+            </article>
+          </div>
+
+          <button class="btn btn-dark">Клиенты о нас</button>
+        </div>
+      </section>
+
+      <section class="prices" id="prices">
+        <div class="container">
+          <h2>Цена Телетайпа зависит от набора функций и количества каналов</h2>
+          <div class="billing-tabs" data-billing-tabs>
+            <button class="active" data-plan="month">Месяц</button>
+            <button data-plan="quarter">3 месяца</button>
+            <button data-plan="year">Год</button>
+          </div>
+
+          <div class="pricing-layout">
+            <div class="pricing-column" id="feature-column"></div>
+            <div class="pricing-column" id="channel-column"></div>
+            <aside class="summary" id="summary"></aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="corporate" id="corporate">
+        <div class="container">
+          <div class="corp-shell">
+            <div class="corp-left">
+              <h2>Enterprise-решение, выстроенное под вашу архитектуру и масштаб</h2>
+              <button class="btn btn-light">Назначить онлайн-встречу</button>
+            </div>
+            <div class="corp-right">
+              <span>Гибкая архитектура</span>
+              <span>Enterprise SLA</span>
+              <span>Собственная инфраструктура</span>
+              <span>Сложные интеграции</span>
+              <span>Частное облако</span>
+              <span>Ролевой доступ</span>
+              <span>Контроль процессов</span>
+              <span>Индивидуальные сценарии</span>
+              <span>Масштабируемость</span>
+              <span>Безопасность данных</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer-top">
+          <img src="https://www.figma.com/api/mcp/asset/10d24f01-b529-4c2b-83d6-ad4f8bc19cf3" alt="Teletype" />
+          <p>Сила в коммуникациях</p>
+        </div>
+
+        <div class="footer-grid">
+          <div>
+            <h4>Функции</h4>
+            <a href="#">Диалог-центр</a>
+            <a href="#">Каналы</a>
+            <a href="#">AI-помощник</a>
+            <a href="#">Интеграции</a>
+          </div>
+          <div>
+            <h4>Интеграции</h4>
+            <a href="#">AmoCRM</a>
+            <a href="#">Bitrix24</a>
+            <a href="#">Roistat</a>
+            <a href="#">Sipuni</a>
+          </div>
+          <div>
+            <h4>Ресурсы</h4>
+            <a href="#">Справочный центр</a>
+            <a href="#">Документация API</a>
+            <a href="#">Changelog</a>
+            <a href="#">Бренд-активы</a>
+          </div>
+          <div>
+            <h4>Компания</h4>
+            <a href="#">Цены</a>
+            <a href="#">Корпорациям</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Контакты</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2018—2026, ООО «Телетайп»</p>
+          <p>+7 (495) 156-10-68</p>
+          <p>hello@teletype.app</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
