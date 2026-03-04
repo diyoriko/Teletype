@@ -1,5 +1,5 @@
 :root {
-  --strict-light: #fef9ea;
+  --strict-light: #f6f3e9;
   --strict-dark: #1e1919;
   --warm-dark: #574d44;
   --warm-light: #ddd0b0;
@@ -20,7 +20,7 @@
 body {
   margin: 0;
   color: var(--strict-dark);
-  font-family: "Manrope", sans-serif;
+  font-family: "Oceanic Grotesk", "Manrope", sans-serif;
   background: var(--strict-light);
 }
 
@@ -28,7 +28,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Oceanic Grotesk", "Space Grotesk", sans-serif;
   margin: 0;
 }
 
@@ -38,42 +38,40 @@ a {
 }
 
 .container {
-  width: min(1412px, calc(100% - 40px));
+  width: min(1412px, calc(100% - 48px));
   margin: 0 auto;
 }
 
 .top-nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(254, 249, 234, 0.92);
-  backdrop-filter: blur(10px);
+  padding-top: 28px;
 }
 
 .nav-shell {
-  width: min(1412px, calc(100% - 40px));
+  width: min(1412px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 22px 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .nav-left-pill {
-  border: 1px solid rgba(87, 77, 68, 0.25);
+  border: 1px solid rgba(87, 77, 68, 0.22);
   border-radius: var(--radius-pill);
-  background: rgba(255, 251, 240, 0.75);
+  background: rgba(255, 253, 247, 0.7);
   display: flex;
   align-items: center;
-  gap: 36px;
-  padding: 10px 24px;
-  min-height: 58px;
+  gap: 44px;
+  padding: 14px 34px 14px 28px;
+  min-height: 94px;
+  flex: 1;
+  max-width: 980px;
 }
 
 .brand img {
   display: block;
-  width: 135px;
+  width: 170px;
   height: auto;
 }
 
@@ -86,7 +84,9 @@ a {
 .menu a {
   padding: 8px 10px;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1;
 }
 
 .menu a:hover {
@@ -95,22 +95,24 @@ a {
 
 .nav-actions {
   display: flex;
-  gap: 10px;
+  gap: 16px;
+  flex-shrink: 0;
 }
 
 .btn {
-  border: 0;
+  border: 1px solid transparent;
   border-radius: var(--radius-pill);
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 20px;
+  font-family: "Oceanic Grotesk", "Space Grotesk", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
   line-height: 1;
-  padding: 14px 30px;
+  padding: 20px 42px;
   cursor: pointer;
 }
 
 .btn-ghost {
-  background: transparent;
-  border: 1px solid rgba(87, 77, 68, 0.25);
+  background: rgba(255, 253, 247, 0.35);
+  border-color: rgba(87, 77, 68, 0.28);
 }
 
 .btn-dark {
@@ -125,38 +127,41 @@ a {
 }
 
 .hero {
-  padding: 34px 0 120px;
+  padding: 22px 0 120px;
 }
 
 .hero-inner {
-  border-radius: 56px;
-  padding: 90px 48px 72px;
+  border-radius: 0;
+  padding: 120px 48px 0;
   text-align: center;
-  background: linear-gradient(180deg, rgba(255, 251, 240, 0.5) 0%, rgba(0, 204, 55, 0.1) 30%, rgba(0, 204, 55, 0.45) 80%, #00cc37 100%);
+  background: linear-gradient(180deg, #f3f6e9 0%, #edf5dd 36%, #d8f2cd 63%, #b6e8b0 84%, #9adf97 100%);
+  min-height: 1220px;
 }
 
 .badge {
   display: inline-flex;
   border-radius: var(--radius-pill);
-  background: linear-gradient(180deg, #89ff9d 0%, #00cc37 100%);
+  background: linear-gradient(180deg, #78f386 0%, #00cc37 100%);
   font-weight: 700;
-  padding: 12px 20px;
+  font-size: 36px;
+  padding: 18px 34px;
 }
 
 .hero h1 {
-  max-width: 900px;
-  margin: 26px auto 44px;
-  font-size: clamp(38px, 7.2vw, 80px);
+  max-width: 1020px;
+  margin: 48px auto 62px;
+  font-size: clamp(62px, 6vw, 112px);
   line-height: 1.06;
+  letter-spacing: -0.02em;
 }
 
 .mockup {
-  background: rgba(255, 251, 240, 0.8);
+  background: #f0f1e4;
   border: 1px solid rgba(87, 77, 68, 0.25);
-  border-radius: var(--radius-l);
-  min-height: 420px;
+  border-radius: 35px;
+  min-height: 730px;
   display: grid;
-  grid-template-columns: 250px 260px 1fr;
+  grid-template-columns: 280px 280px 1fr;
   overflow: hidden;
   text-align: left;
 }
@@ -164,23 +169,30 @@ a {
 .mockup-sidebar,
 .mockup-list,
 .mockup-chat {
-  padding: 18px;
+  padding: 26px 20px;
   border-right: 1px solid rgba(87, 77, 68, 0.18);
+}
+
+.mockup-sidebar h3 {
+  font-size: 39px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .mockup-sidebar ul {
   list-style: none;
-  margin: 14px 0 0;
+  margin: 22px 0 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .mockup-sidebar li {
-  padding: 10px;
+  padding: 12px 14px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.4);
-  font-size: 14px;
+  background: rgba(255, 255, 255, 0.36);
+  font-size: 33px;
+  line-height: 1;
   display: flex;
   justify-content: space-between;
 }
@@ -190,18 +202,19 @@ a {
 }
 
 .chat-row {
-  padding: 8px 0;
+  padding: 12px 0 14px;
   border-bottom: 1px dashed rgba(87, 77, 68, 0.2);
-  font-size: 14px;
+  font-size: 35px;
+  line-height: 1;
 }
 
 .dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--green);
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 .mockup-chat {
@@ -213,43 +226,38 @@ a {
 
 .bubble {
   display: inline-flex;
-  max-width: 60%;
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 14px;
+  max-width: 64%;
+  background: #f6f5f5;
+  padding: 14px 20px;
+  border-radius: 18px;
+  font-size: 33px;
+  line-height: 1;
+  color: rgba(30, 25, 25, 0.72);
 }
 
 .composer {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .composer input {
   flex: 1;
-  border: 1px solid rgba(87, 77, 68, 0.3);
-  border-radius: 12px;
+  border: 1px solid rgba(87, 77, 68, 0.22);
+  border-radius: 18px;
   background: transparent;
-  padding: 12px;
+  padding: 14px 16px;
+  min-height: 58px;
+  font-size: 30px;
 }
 
 .composer button {
   border: 0;
-  border-radius: 12px;
+  border-radius: 16px;
   background: var(--strict-dark);
   color: var(--strict-light);
-  padding: 10px 14px;
-}
-
-.btn-hero {
-  margin-top: 32px;
-  border-radius: 20px;
-  font-size: 34px;
-}
-
-.hero-note {
-  margin: 18px 0 0;
-  font-size: 22px;
+  padding: 15px 20px;
+  font-size: 24px;
 }
 
 .products,
@@ -663,12 +671,52 @@ a {
     width: min(100%, calc(100% - 24px));
   }
 
+  .btn {
+    font-size: 26px;
+    padding: 14px 22px;
+  }
+
   .menu {
     display: none;
   }
 
+  .nav-left-pill {
+    min-height: 72px;
+    padding: 10px 18px;
+  }
+
+  .brand img {
+    width: 132px;
+  }
+
   .mockup {
     grid-template-columns: 1fr;
+  }
+
+  .hero-inner {
+    min-height: auto;
+    padding-top: 62px;
+    border-radius: 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 10vw, 66px);
+    margin-top: 24px;
+  }
+
+  .badge {
+    font-size: 20px;
+    padding: 10px 18px;
+  }
+
+  .mockup-sidebar h3 {
+    font-size: 28px;
+  }
+
+  .mockup-sidebar li,
+  .chat-row,
+  .bubble {
+    font-size: 20px;
   }
 
   .product-grid {
@@ -709,10 +757,6 @@ a {
   .hero-inner {
     padding: 64px 20px;
     border-radius: 30px;
-  }
-
-  .hero-note {
-    font-size: 18px;
   }
 
   .products p {
