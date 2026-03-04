@@ -1,3 +1,35 @@
+@font-face {
+  font-family: "Oceanic Grotesk";
+  src: url("./assets/fonts/OceanicGrotesk-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oceanic Grotesk";
+  src: url("./assets/fonts/OceanicGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oceanic Grotesk";
+  src: url("./assets/fonts/OceanicGrotesk-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Oceanic Grotesk";
+  src: url("./assets/fonts/OceanicGrotesk-Extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --strict-light: #f6f3e9;
   --strict-dark: #1e1919;
@@ -20,7 +52,7 @@
 body {
   margin: 0;
   color: var(--strict-dark);
-  font-family: "Oceanic Grotesk", "Manrope", sans-serif;
+  font-family: "Oceanic Grotesk", sans-serif;
   background: var(--strict-light);
 }
 
@@ -28,7 +60,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Oceanic Grotesk", "Space Grotesk", sans-serif;
+  font-family: "Oceanic Grotesk", sans-serif;
   margin: 0;
 }
 
@@ -102,7 +134,7 @@ a {
 .btn {
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
-  font-family: "Oceanic Grotesk", "Space Grotesk", sans-serif;
+  font-family: "Oceanic Grotesk", sans-serif;
   font-size: 40px;
   font-weight: 500;
   line-height: 1;
