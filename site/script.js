@@ -11,9 +11,9 @@ if (caseTabs && caseGrid) {
     btn.classList.add("active");
 
     caseGrid.querySelectorAll(".case-card").forEach((card) => {
-      const tags = (card.dataset.tag || "").split(" ");
+      const tags = (card.dataset.tag || "").split(" ").filter(Boolean);
       const visible = filter === "all" || tags.includes(filter);
-      card.style.display = visible ? "block" : "none";
+      card.style.display = visible ? "grid" : "none";
     });
   });
 }
@@ -21,25 +21,112 @@ if (caseTabs && caseGrid) {
 const billingMultipliers = {
   month: 1,
   quarter: 0.9,
-  year: 0.8,
+  year: 0.82,
 };
 
 const featureData = [
-  { id: "operators", label: "Операторы", price: 720, active: true, qty: 3, hasQty: true },
-  { id: "button", label: "Кнопка с мессенджерами", price: 540, active: false },
-  { id: "stats", label: "Статистика Premium", price: 990, active: false },
-  { id: "templates", label: "Шаблоны ответов", price: 360, active: false },
-  { id: "api", label: "Публичное API", price: 360, active: false },
-  { id: "host", label: "Хостинг телефона 24/7", price: 360, active: false },
+  {
+    id: "operators",
+    label: "Операторы",
+    price: 720,
+    active: true,
+    qty: 3,
+    hasQty: true,
+    icon: "",
+  },
+  {
+    id: "button",
+    label: "Кнопка с мессенджерами",
+    price: 540,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "stats",
+    label: "Статистика Premium",
+    price: 990,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "templates",
+    label: "Шаблоны ответов",
+    price: 360,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "api",
+    label: "Публичное API",
+    price: 360,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "host",
+    label: "Хостинг телефона 24/7",
+    price: 360,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "amocrm",
+    label: "Интеграция с AmoCRM",
+    price: 0,
+    active: true,
+    icon: "",
+  },
 ];
 
 const channelData = [
-  { id: "wa", label: "WhatsApp", price: 4500, active: true, qty: 1, hasQty: true },
-  { id: "vk", label: "ВКонтакте", price: 990, active: true, qty: 1, hasQty: true },
-  { id: "chat", label: "Чат на сайте", price: 540, active: true, qty: 1, hasQty: true },
-  { id: "max", label: "MAX", price: 4500, active: false },
-  { id: "mail", label: "Почта", price: 660, active: false },
-  { id: "tg", label: "Telegram", price: 4500, active: false },
+  {
+    id: "wa",
+    label: "WhatsApp",
+    price: 4500,
+    active: true,
+    qty: 1,
+    hasQty: true,
+    icon: "https://www.figma.com/api/mcp/asset/eb659d4a-bb18-4a38-86eb-6ec26edc1c41",
+  },
+  {
+    id: "vk",
+    label: "ВКонтакте",
+    price: 990,
+    active: true,
+    qty: 1,
+    hasQty: true,
+    icon: "https://www.figma.com/api/mcp/asset/85c88f6b-5ce7-4402-a9be-647870c3e60b",
+  },
+  {
+    id: "chat",
+    label: "Чат на сайте",
+    price: 540,
+    active: true,
+    qty: 1,
+    hasQty: true,
+    icon: "",
+  },
+  {
+    id: "max",
+    label: "MAX",
+    price: 4500,
+    active: false,
+    icon: "https://www.figma.com/api/mcp/asset/bca36164-c642-4cf2-9e89-eb72cf41ec88",
+  },
+  {
+    id: "mail",
+    label: "Почта",
+    price: 660,
+    active: false,
+    icon: "https://www.figma.com/api/mcp/asset/d4cbd91f-93e5-4518-832d-3541e2e230a5",
+  },
+  {
+    id: "tg",
+    label: "Telegram",
+    price: 4500,
+    active: false,
+    icon: "https://www.figma.com/api/mcp/asset/b5b6f9df-b75e-4c70-8eab-0f5c0cdf6812",
+  },
 ];
 
 const featureColumn = document.getElementById("feature-column");
@@ -53,12 +140,17 @@ function formatPrice(value) {
   return `${new Intl.NumberFormat("ru-RU").format(value)} ₽`;
 }
 
-function buildRow(item, group) {
+function getPeriodLabel() {
+  return currentPlan === "month" ? "мес" : currentPlan === "quarter" ? "3 мес" : "год";
+}
+
+function buildRow(item) {
   const row = document.createElement("div");
   row.className = "price-row";
 
   const toggle = document.createElement("button");
   toggle.className = `switch ${item.active ? "on" : ""}`;
+  toggle.setAttribute("aria-label", `Переключить ${item.label}`);
   toggle.addEventListener("click", () => {
     item.active = !item.active;
     renderPricing();
@@ -66,14 +158,34 @@ function buildRow(item, group) {
 
   const label = document.createElement("div");
   label.className = "row-label";
+
+  const title = document.createElement("div");
+  title.className = "row-title";
+
+  if (item.icon) {
+    const icon = document.createElement("img");
+    icon.className = "row-icon";
+    icon.src = item.icon;
+    icon.alt = "";
+    title.append(icon);
+  }
+
+  const text = document.createElement("b");
+  text.textContent = item.label;
+  title.append(text);
+
   const amount = Math.round(item.price * billingMultipliers[currentPlan]);
-  label.innerHTML = `<b>${item.label}</b><span>${formatPrice(amount)} / мес</span>`;
+  const sub = document.createElement("span");
+  sub.textContent = `${formatPrice(amount)}/${getPeriodLabel()}`;
+
+  label.append(title, sub);
 
   const controls = document.createElement("div");
   controls.className = "stepper";
 
   if (item.hasQty) {
     const minus = document.createElement("button");
+    minus.type = "button";
     minus.textContent = "−";
     minus.addEventListener("click", () => {
       item.qty = Math.max(1, (item.qty || 1) - 1);
@@ -84,6 +196,7 @@ function buildRow(item, group) {
     qty.textContent = item.qty || 1;
 
     const plus = document.createElement("button");
+    plus.type = "button";
     plus.textContent = "+";
     plus.addEventListener("click", () => {
       item.qty = (item.qty || 1) + 1;
@@ -113,8 +226,8 @@ function renderPricing() {
   featureColumn.innerHTML = "<h3>Функции</h3>";
   channelColumn.innerHTML = "<h3>Каналы</h3>";
 
-  featureData.forEach((item) => featureColumn.append(buildRow(item, "features")));
-  channelData.forEach((item) => channelColumn.append(buildRow(item, "channels")));
+  featureData.forEach((item) => featureColumn.append(buildRow(item)));
+  channelData.forEach((item) => channelColumn.append(buildRow(item)));
 
   const total = calculateTotal();
   const selected = [...featureData, ...channelData].filter((item) => item.active);
@@ -126,12 +239,12 @@ function renderPricing() {
         .map((item) => {
           const qty = item.hasQty ? item.qty || 1 : 1;
           const amount = Math.round(item.price * billingMultipliers[currentPlan]) * qty;
-          return `<li><span>${item.label}${qty > 1 ? ` ${qty}x` : ""}</span><b>${formatPrice(amount)}</b></li>`;
+          return `<li><span>${item.label}${qty > 1 ? ` <i>${qty}x</i>` : ""}</span><b>${formatPrice(amount)}</b></li>`;
         })
         .join("")}
     </ul>
-    <button class="total-btn">${formatPrice(total)} / месяц</button>
-    <p>7 дней бесплатно. Не надо привязывать карту.</p>
+    <button class="total-btn">${formatPrice(total)} / ${getPeriodLabel()}</button>
+    <p>7 дней бесплатно.<br />Не надо привязывать карту.</p>
   `;
 }
 
