@@ -15,14 +15,10 @@ MAX_DIFF_RATIO="${FIGMA_MAX_DIFF_RATIO:-0.001}"
 if [[ -n "${AGENT_TEST_PORT:-}" ]]; then
   PORT="${AGENT_TEST_PORT}"
 else
-  PORT="$(python3 - <<'PY'
-import socket
-s = socket.socket()
-s.bind(("127.0.0.1", 0))
-print(s.getsockname()[1])
-s.close()
-PY
-)"
+  PORT="$(( (RANDOM % 20000) + 40000 ))"
+fi
+if [[ -z "${PORT}" ]]; then
+  PORT="4173"
 fi
 URL="http://127.0.0.1:${PORT}/site/index.html"
 

@@ -58,3 +58,14 @@ Uninstall:
 ```bash
 npm run agent:hourly:uninstall
 ```
+
+## GitHub hourly reports
+
+See workflow:
+
+- `.github/workflows/agents-hourly-report.yml`
+
+It publishes:
+
+- run summary in Actions UI
+- latest consolidated report into issue `Codex Agents: Latest Hourly Report`

@@ -8,6 +8,7 @@ DEV_REPORT_PATH="$ROOT_DIR/test-results/agent/developer-latest.json"
 TARGET_BRANCH="${DEVELOPER_TARGET_BRANCH:-Codex}"
 AUTO_COMMIT="${DEVELOPER_AUTO_COMMIT:-1}"
 AUTO_PUSH="${DEVELOPER_AUTO_PUSH:-1}"
+EXEC_TIMEOUT_SEC="${DEVELOPER_EXEC_TIMEOUT_SEC:-900}"
 
 cd "$ROOT_DIR"
 
@@ -106,8 +107,55 @@ PY
 fi
 
 echo "[developer] running codex exec..."
+set +e
+codex exec --cd "$ROOT_DIR" --full-auto - < "$PROMPT_PATH" &
+CODEX_PID=$!
+CODEX_EXIT=0
+START_TS="$(date +%s)"
+while kill -0 "$CODEX_PID" >/dev/null 2>&1; do
+  NOW_TS="$(date +%s)"
+  ELAPSED="$(( NOW_TS - START_TS ))"
+  if (( ELAPSED >= EXEC_TIMEOUT_SEC )); then
+    echo "[developer] codex exec timed out after ${EXEC_TIMEOUT_SEC}s"
+    kill "$CODEX_PID" >/dev/null 2>&1 || true
+    wait "$CODEX_PID" 2>/dev/null || true
+    CODEX_EXIT=124
+    break
+  fi
+  sleep 2
+done
+if [[ "$CODEX_EXIT" == "0" ]]; then
+  wait "$CODEX_PID"
+  CODEX_EXIT="$?"
+fi
+set -e
 
-codex exec --cd "$ROOT_DIR" --full-auto - < "$PROMPT_PATH"
+if [[ "$CODEX_EXIT" != "0" ]]; then
+  echo "[developer] codex exec failed with exit code $CODEX_EXIT"
+  python3 - "$DEV_REPORT_PATH" "$CODEX_EXIT" <<'PY'
+import json
+import sys
+import time
+from pathlib import Path
+
+Path(sys.argv[1]).write_text(
+    json.dumps(
+        {
+            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "status": "failed",
+            "reason": "codex_exec_failed",
+            "exit_code": int(sys.argv[2]),
+            "committed": False,
+            "pushed": False,
+        },
+        ensure_ascii=False,
+        indent=2,
+    ),
+    encoding="utf-8",
+)
+PY
+  exit 1
+fi
 
 if [[ "$AUTO_COMMIT" != "1" ]]; then
   echo "[developer] auto-commit disabled."

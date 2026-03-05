@@ -92,6 +92,19 @@ npm run agent:hourly:install
 npm run agent:hourly:uninstall
 ```
 
+## Почасовые репорты в GitHub UI
+
+В репозитории добавлен workflow:
+
+- `.github/workflows/agents-hourly-report.yml`
+
+Он запускается каждый час и:
+
+1. прогоняет `Tester`
+2. прогоняет `Developer` в `dry-run` режиме (без авто-фиксов)
+3. публикует summary в GitHub Actions UI
+4. обновляет issue `Codex Agents: Latest Hourly Report` с последним отчетом
+
 ## Baseline
 
 Для 1:1 с Figma нужно один раз положить эталонный PNG в:

@@ -44,11 +44,12 @@ if visual.get("diff_ratio") is not None:
     parts.append(f"diff={visual['diff_ratio']:.4%}")
 
 if developer:
+    dev_status = developer.get("status")
+    if dev_status:
+        parts.append(f"dev={dev_status}")
     if developer.get("committed"):
         sha = developer.get("commit_sha", "")[:7]
         parts.append(f"dev_commit={sha}")
-    elif developer.get("status") == "skipped":
-        parts.append("dev=skipped")
 
 message = " | ".join(parts)[:220]
 
