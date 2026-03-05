@@ -55,13 +55,15 @@ message = " | ".join(parts)[:220]
 
 print(f"[notify] {title} | {message}")
 
-applescript = r'''
-on run argv
-  set t to item 1 of argv
-  set s to item 2 of argv
-  set m to item 3 of argv
-  display notification m with title t subtitle s
-end run
-'''
-subprocess.run(["osascript", "-", title, subtitle, message], input=applescript, text=True, check=False)
+message = message.replace("\n", " ")
+
+def esc(v: str) -> str:
+    return v.replace("\\", "\\\\").replace('"', '\\"')
+
+script = (
+    f'display notification "{esc(message)}" '
+    f'with title "{esc(title)}" '
+    f'subtitle "{esc(subtitle)}"'
+)
+subprocess.run(["osascript", "-e", script], check=False)
 PY

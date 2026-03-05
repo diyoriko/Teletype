@@ -15,13 +15,26 @@ if npm run agent:tester; then
 fi
 
 echo "[loop] 2/3 developer"
+DEV_EXIT=0
+set +e
 npm run agent:developer
+DEV_EXIT=$?
+set -e
+if [[ "$DEV_EXIT" != "0" ]]; then
+  echo "[loop] developer failed with exit code: $DEV_EXIT"
+fi
 
 echo "[loop] 3/3 tester (re-check)"
 if npm run agent:tester; then
   bash "$ROOT_DIR/scripts/agents/notify.sh" "$TESTER_REPORT" "$DEVELOPER_REPORT" || true
+  if [[ "$DEV_EXIT" != "0" ]]; then
+    exit "$DEV_EXIT"
+  fi
   exit 0
 fi
 
 bash "$ROOT_DIR/scripts/agents/notify.sh" "$TESTER_REPORT" "$DEVELOPER_REPORT" || true
+if [[ "$DEV_EXIT" != "0" ]]; then
+  exit "$DEV_EXIT"
+fi
 exit 1
