@@ -9,6 +9,7 @@ TARGET_BRANCH="${DEVELOPER_TARGET_BRANCH:-Codex}"
 AUTO_COMMIT="${DEVELOPER_AUTO_COMMIT:-1}"
 AUTO_PUSH="${DEVELOPER_AUTO_PUSH:-1}"
 EXEC_TIMEOUT_SEC="${DEVELOPER_EXEC_TIMEOUT_SEC:-900}"
+OTEL_SDK_DISABLED="${OTEL_SDK_DISABLED:-true}"
 
 cd "$ROOT_DIR"
 
@@ -108,7 +109,7 @@ fi
 
 echo "[developer] running codex exec..."
 set +e
-codex exec --cd "$ROOT_DIR" --full-auto - < "$PROMPT_PATH" &
+env OTEL_SDK_DISABLED="$OTEL_SDK_DISABLED" codex exec --cd "$ROOT_DIR" --full-auto - < "$PROMPT_PATH" &
 CODEX_PID=$!
 CODEX_EXIT=0
 START_TS="$(date +%s)"

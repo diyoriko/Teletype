@@ -33,6 +33,7 @@ LINT_STATUS="failed"
 BUILD_STATUS="failed"
 VISUAL_STATUS="failed"
 VISUAL_SUMMARY='{"status":"failed","reason":"not_run"}'
+SCREENSHOT_BROWSER=""
 
 run_step() {
   local step_name="$1"
@@ -69,7 +70,20 @@ if [[ -f "$BASELINE_PATH" ]]; then
 
   sleep 1
 
-  if run_step screenshot npx playwright screenshot --browser chromium --full-page --wait-for-timeout 1200 --viewport-size "1512,982" "$URL" "$ACTUAL_PNG"; then
+  screenshot_ok=0
+  for browser in chromium webkit firefox; do
+    for attempt in 1 2; do
+      echo "[tester] screenshot try: browser=$browser attempt=$attempt" | tee -a "$LOG_PATH"
+      if run_step "screenshot_${browser}_${attempt}" npx playwright screenshot --browser "$browser" --full-page --wait-for-timeout 1200 --viewport-size "1512,982" "$URL" "$ACTUAL_PNG"; then
+        screenshot_ok=1
+        SCREENSHOT_BROWSER="$browser"
+        break 2
+      fi
+      sleep 1
+    done
+  done
+
+  if [[ "$screenshot_ok" == "1" ]]; then
     if VISUAL_SUMMARY="$(python3 "$ROOT_DIR/scripts/agents/png_diff.py" --expected "$BASELINE_PATH" --actual "$ACTUAL_PNG" --max-diff-ratio "$MAX_DIFF_RATIO" --json-out "$VISUAL_JSON")"; then
       VISUAL_STATUS="passed"
     else
@@ -92,8 +106,9 @@ if [[ "$LINT_STATUS" != "passed" || "$BUILD_STATUS" != "passed" || "$VISUAL_STAT
   OVERALL="failed"
 fi
 
-python3 - "$REPORT_PATH" "$TIMESTAMP" "$OVERALL" "$LINT_STATUS" "$BUILD_STATUS" "$VISUAL_STATUS" "$BASELINE_PATH" "$ACTUAL_PNG" "$LOG_PATH" "$VISUAL_SUMMARY" <<'PY'
+SCREENSHOT_BROWSER="${SCREENSHOT_BROWSER}" python3 - "$REPORT_PATH" "$TIMESTAMP" "$OVERALL" "$LINT_STATUS" "$BUILD_STATUS" "$VISUAL_STATUS" "$BASELINE_PATH" "$ACTUAL_PNG" "$LOG_PATH" "$VISUAL_SUMMARY" <<'PY'
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -122,6 +137,9 @@ report = {
         "baseline": baseline_path,
         "actual": actual_png,
         "log": log_path,
+    },
+    "runtime": {
+        "screenshot_browser": os.environ.get("SCREENSHOT_BROWSER", ""),
     },
     "visual": json.loads(visual_summary),
 }
