@@ -84,6 +84,22 @@ def main() -> int:
                 act = visual["actual"]
                 lines.append(f"- actual: `{act.get('width')}x{act.get('height')}`")
 
+        figma = tester.get("figma", {})
+        if figma:
+            lines.append("")
+            lines.append("### Figma")
+            if figma.get("file_key"):
+                lines.append(f"- file_key: `{figma['file_key']}`")
+            if figma.get("node_id"):
+                lines.append(f"- node_id: `{figma['node_id']}`")
+
+        recommended = tester.get("recommended_fixes") or []
+        if recommended:
+            lines.append("")
+            lines.append("### Recommended Fixes")
+            for item in recommended:
+                lines.append(f"- {item}")
+
         artifacts = tester.get("artifacts", {})
         if artifacts:
             lines.append("")
@@ -98,6 +114,12 @@ def main() -> int:
         lines.append("Status: `missing`")
     else:
         lines.append(f"Status: `{developer.get('status', 'unknown')}`")
+        if developer.get("timestamp"):
+            lines.append(f"- timestamp: `{developer.get('timestamp')}`")
+        if developer.get("reason"):
+            lines.append(f"- reason: `{developer.get('reason')}`")
+        if developer.get("exit_code") is not None:
+            lines.append(f"- exit_code: `{developer.get('exit_code')}`")
         if "committed" in developer:
             lines.append(f"- committed: `{developer.get('committed')}`")
         if "pushed" in developer:

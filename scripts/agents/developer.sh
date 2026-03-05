@@ -10,6 +10,7 @@ AUTO_COMMIT="${DEVELOPER_AUTO_COMMIT:-1}"
 AUTO_PUSH="${DEVELOPER_AUTO_PUSH:-1}"
 EXEC_TIMEOUT_SEC="${DEVELOPER_EXEC_TIMEOUT_SEC:-900}"
 OTEL_SDK_DISABLED="${OTEL_SDK_DISABLED:-true}"
+FULL_ACCESS_MODE="${DEVELOPER_FULL_ACCESS_MODE:-1}"
 
 cd "$ROOT_DIR"
 
@@ -50,6 +51,8 @@ out = Path(sys.argv[2])
 failed = [c for c in report.get('checks', []) if c.get('status') != 'passed']
 failed_names = ', '.join(c.get('name', 'unknown') for c in failed) if failed else 'unknown'
 visual = report.get('visual', {})
+recommended = report.get('recommended_fixes', [])
+figma = report.get('figma', {})
 
 prompt = f"""Ты агент Developer для этого репозитория.
 
@@ -64,6 +67,9 @@ prompt = f"""Ты агент Developer для этого репозитория.
 - Visual summary: {json.dumps(visual, ensure_ascii=False)}
 - Baseline: {report.get('artifacts', {}).get('baseline')}
 - Actual screenshot: {report.get('artifacts', {}).get('actual')}
+- Figma file key: {figma.get('file_key')}
+- Figma node id: {figma.get('node_id')}
+- Рекомендованные правки от Tester: {json.dumps(recommended, ensure_ascii=False)}
 
 Задача:
 1) Исправь причины падения.
@@ -109,26 +115,67 @@ fi
 
 echo "[developer] running codex exec..."
 set +e
-env OTEL_SDK_DISABLED="$OTEL_SDK_DISABLED" codex exec --cd "$ROOT_DIR" --full-auto - < "$PROMPT_PATH" &
-CODEX_PID=$!
-CODEX_EXIT=0
-START_TS="$(date +%s)"
-while kill -0 "$CODEX_PID" >/dev/null 2>&1; do
-  NOW_TS="$(date +%s)"
-  ELAPSED="$(( NOW_TS - START_TS ))"
-  if (( ELAPSED >= EXEC_TIMEOUT_SEC )); then
-    echo "[developer] codex exec timed out after ${EXEC_TIMEOUT_SEC}s"
-    kill "$CODEX_PID" >/dev/null 2>&1 || true
-    wait "$CODEX_PID" 2>/dev/null || true
-    CODEX_EXIT=124
-    break
-  fi
-  sleep 2
-done
-if [[ "$CODEX_EXIT" == "0" ]]; then
-  wait "$CODEX_PID"
-  CODEX_EXIT="$?"
+if [[ "$FULL_ACCESS_MODE" == "1" ]]; then
+  CODEX_MODE_FLAG="--dangerously-bypass-approvals-and-sandbox"
+else
+  CODEX_MODE_FLAG="--full-auto"
 fi
+
+python3 - "$ROOT_DIR" "$PROMPT_PATH" "$EXEC_TIMEOUT_SEC" "$OTEL_SDK_DISABLED" "$CODEX_MODE_FLAG" <<'PY'
+import os
+import signal
+import subprocess
+import sys
+
+root_dir, prompt_path, timeout_s, otel_disabled, mode_flag = sys.argv[1:]
+timeout_sec = int(timeout_s)
+
+if mode_flag not in {"--dangerously-bypass-approvals-and-sandbox", "--full-auto"}:
+    print(f"[developer] invalid mode flag: {mode_flag}")
+    sys.exit(2)
+
+env = os.environ.copy()
+env["OTEL_SDK_DISABLED"] = otel_disabled
+
+cmd = ["codex", "exec", "--cd", root_dir, mode_flag, "-"]
+
+try:
+    with open(prompt_path, "rb") as prompt_fd:
+        proc = subprocess.Popen(
+            cmd,
+            stdin=prompt_fd,
+            cwd=root_dir,
+            env=env,
+            preexec_fn=os.setsid,
+        )
+except FileNotFoundError:
+    print("[developer] codex command not found in PATH")
+    sys.exit(127)
+
+try:
+    proc.wait(timeout=timeout_sec)
+except subprocess.TimeoutExpired:
+    print(f"[developer] codex exec timed out after {timeout_sec}s")
+    try:
+        os.killpg(proc.pid, signal.SIGTERM)
+    except ProcessLookupError:
+        pass
+    try:
+        proc.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        try:
+            proc.wait(timeout=2)
+        except subprocess.TimeoutExpired:
+            pass
+    sys.exit(124)
+
+sys.exit(proc.returncode if proc.returncode is not None else 1)
+PY
+CODEX_EXIT="$?"
 set -e
 
 if [[ "$CODEX_EXIT" != "0" ]]; then

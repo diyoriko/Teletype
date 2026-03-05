@@ -21,6 +21,7 @@ npm run agent:developer
 By default Developer:
 
 - runs `codex exec` to implement tester findings
+- uses full-access codex mode (`--dangerously-bypass-approvals-and-sandbox`)
 - commits changes
 - pushes to `origin/Codex`
 
@@ -35,6 +36,18 @@ Disable auto commit/push:
 ```bash
 DEVELOPER_AUTO_COMMIT=0 npm run agent:developer
 DEVELOPER_AUTO_PUSH=0 npm run agent:developer
+```
+
+Disable full-access mode (fallback to sandboxed full-auto):
+
+```bash
+DEVELOPER_FULL_ACCESS_MODE=0 npm run agent:developer
+```
+
+Override codex exec timeout (seconds):
+
+```bash
+DEVELOPER_EXEC_TIMEOUT_SEC=300 npm run agent:developer
 ```
 
 ## Loop

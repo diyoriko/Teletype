@@ -12,6 +12,8 @@ LOG_PATH="$REPORT_DIR/tester.log"
 
 BASELINE_PATH="${FIGMA_BASELINE_PATH:-$ROOT_DIR/site/assets/figma/baselines/landing-ru-desktop.png}"
 MAX_DIFF_RATIO="${FIGMA_MAX_DIFF_RATIO:-0.001}"
+FIGMA_FILE_KEY="${FIGMA_FILE_KEY:-052jml4BX3L4zHulq0mJT8}"
+FIGMA_NODE_ID="${FIGMA_NODE_ID:-1390:5395}"
 if [[ -n "${AGENT_TEST_PORT:-}" ]]; then
   PORT="${AGENT_TEST_PORT}"
 else
@@ -106,7 +108,7 @@ if [[ "$LINT_STATUS" != "passed" || "$BUILD_STATUS" != "passed" || "$VISUAL_STAT
   OVERALL="failed"
 fi
 
-SCREENSHOT_BROWSER="${SCREENSHOT_BROWSER}" python3 - "$REPORT_PATH" "$TIMESTAMP" "$OVERALL" "$LINT_STATUS" "$BUILD_STATUS" "$VISUAL_STATUS" "$BASELINE_PATH" "$ACTUAL_PNG" "$LOG_PATH" "$VISUAL_SUMMARY" <<'PY'
+SCREENSHOT_BROWSER="${SCREENSHOT_BROWSER}" FIGMA_FILE_KEY="${FIGMA_FILE_KEY}" FIGMA_NODE_ID="${FIGMA_NODE_ID}" python3 - "$REPORT_PATH" "$TIMESTAMP" "$OVERALL" "$LINT_STATUS" "$BUILD_STATUS" "$VISUAL_STATUS" "$BASELINE_PATH" "$ACTUAL_PNG" "$LOG_PATH" "$VISUAL_SUMMARY" <<'PY'
 import json
 import os
 import sys
@@ -141,8 +143,38 @@ report = {
     "runtime": {
         "screenshot_browser": os.environ.get("SCREENSHOT_BROWSER", ""),
     },
+    "figma": {
+        "file_key": os.environ.get("FIGMA_FILE_KEY", ""),
+        "node_id": os.environ.get("FIGMA_NODE_ID", ""),
+    },
     "visual": json.loads(visual_summary),
 }
+
+recommended_fixes = []
+visual = report["visual"]
+if visual.get("reason") == "dimension_mismatch":
+    exp = visual.get("expected", {})
+    act = visual.get("actual", {})
+    if exp and act:
+        height_delta = int(exp.get("height", 0)) - int(act.get("height", 0))
+        if height_delta > 0:
+            recommended_fixes.append(
+                f"Страница короче baseline на {height_delta}px. Проверь пропущенные секции или вертикальные отступы."
+            )
+        elif height_delta < 0:
+            recommended_fixes.append(
+                f"Страница длиннее baseline на {abs(height_delta)}px. Проверь лишние блоки или завышенные отступы."
+            )
+if visual.get("reason") == "screenshot_failed":
+    recommended_fixes.append(
+        "Screenshot не снят. Перезапусти tester; если повторяется, проверь доступность headless браузера."
+    )
+if visual.get("diff_ratio") is not None:
+    recommended_fixes.append(
+        f"Pixel diff: {visual['diff_ratio']:.4%} при лимите {visual.get('max_diff_ratio', 0):.4%}."
+    )
+
+report["recommended_fixes"] = recommended_fixes
 
 Path(report_path).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 print(json.dumps(report, ensure_ascii=False))

@@ -30,6 +30,8 @@ npm run agent:tester
 - `FIGMA_BASELINE_PATH` — путь до baseline PNG (по умолчанию `site/assets/figma/baselines/landing-ru-desktop.png`)
 - `FIGMA_MAX_DIFF_RATIO` — максимальный допустимый процент отличий (по умолчанию `0.001` = 0.1%)
 - `AGENT_TEST_PORT` — порт локального сервера (если не указан, выбирается автоматически)
+- `FIGMA_FILE_KEY` — file key макета Figma (по умолчанию `052jml4BX3L4zHulq0mJT8`)
+- `FIGMA_NODE_ID` — node id макета Figma (по умолчанию `1390:5395`)
 
 ## Agent 2: Developer
 
@@ -54,6 +56,8 @@ npm run agent:developer
 - `DEVELOPER_AUTO_COMMIT` — автокоммит (`1`/`0`, по умолчанию `1`)
 - `DEVELOPER_AUTO_PUSH` — автопуш (`1`/`0`, по умолчанию `1`)
 - `DEVELOPER_DRY_RUN` — dry-run (`1`/`0`)
+- `DEVELOPER_FULL_ACCESS_MODE` — запуск codex в full-access режиме (`1`/`0`, по умолчанию `1`)
+- `DEVELOPER_EXEC_TIMEOUT_SEC` — таймаут codex exec в секундах (по умолчанию `900`)
 
 ## Полный цикл
 
