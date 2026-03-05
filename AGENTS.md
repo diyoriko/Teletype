@@ -23,12 +23,13 @@ npm run agent:tester
 - сохраняет отчет:
   - `test-results/agent/tester-latest.json`
   - `test-results/agent/current.png`
+  - `test-results/agent/tester.log`
 
 Переменные окружения:
 
 - `FIGMA_BASELINE_PATH` — путь до baseline PNG (по умолчанию `site/assets/figma/baselines/landing-ru-desktop.png`)
 - `FIGMA_MAX_DIFF_RATIO` — максимальный допустимый процент отличий (по умолчанию `0.001` = 0.1%)
-- `AGENT_TEST_PORT` — порт локального сервера (по умолчанию `4173`)
+- `AGENT_TEST_PORT` — порт локального сервера (если не указан, выбирается автоматически)
 
 ## Agent 2: Developer
 
@@ -43,7 +44,16 @@ npm run agent:developer
 - читает `test-results/agent/tester-latest.json`
 - формирует prompt по проваленным проверкам
 - запускает `codex exec` в текущем репозитории для исправлений
+- если есть изменения — автоматически коммитит и пушит в ветку `Codex`
+- сохраняет отчет: `test-results/agent/developer-latest.json`
 - не запускается, если отчет уже `passed`
+
+Переменные окружения:
+
+- `DEVELOPER_TARGET_BRANCH` — целевая ветка (по умолчанию `Codex`)
+- `DEVELOPER_AUTO_COMMIT` — автокоммит (`1`/`0`, по умолчанию `1`)
+- `DEVELOPER_AUTO_PUSH` — автопуш (`1`/`0`, по умолчанию `1`)
+- `DEVELOPER_DRY_RUN` — dry-run (`1`/`0`)
 
 ## Полный цикл
 
@@ -56,6 +66,31 @@ npm run agent:loop
 1. `Tester`
 2. если есть ошибки — `Developer`
 3. повторный `Tester`
+4. системное уведомление в macOS с итогом прогона
+
+## Уведомления
+
+Запуск ручного уведомления:
+
+```bash
+npm run agent:notify
+```
+
+Уведомление показывает итог проверок и, если был коммит, короткий SHA.
+
+## Почасовой запуск (macOS)
+
+Установить hourly-расписание:
+
+```bash
+npm run agent:hourly:install
+```
+
+Удалить расписание:
+
+```bash
+npm run agent:hourly:uninstall
+```
 
 ## Baseline
 

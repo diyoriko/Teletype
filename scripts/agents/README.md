@@ -18,14 +18,43 @@ Outputs:
 npm run agent:developer
 ```
 
+By default Developer:
+
+- runs `codex exec` to implement tester findings
+- commits changes
+- pushes to `origin/Codex`
+
 Dry run (only build prompt, no auto-fix):
 
 ```bash
 DEVELOPER_DRY_RUN=1 npm run agent:developer
 ```
 
+Disable auto commit/push:
+
+```bash
+DEVELOPER_AUTO_COMMIT=0 npm run agent:developer
+DEVELOPER_AUTO_PUSH=0 npm run agent:developer
+```
+
 ## Loop
 
 ```bash
 npm run agent:loop
+```
+
+`agent:loop` also triggers a macOS notification with run summary.
+
+## Hourly schedule (macOS)
+
+Install:
+
+```bash
+npm run agent:hourly:install
+```
+
+Uninstall:
+
+```bash
+npm run agent:hourly:uninstall
 ```

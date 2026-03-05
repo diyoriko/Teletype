@@ -10,7 +10,10 @@
     "preview": "vite preview",
     "agent:tester": "bash scripts/agents/tester.sh",
     "agent:developer": "bash scripts/agents/developer.sh",
-    "agent:loop": "bash scripts/agents/loop.sh"
+    "agent:loop": "bash scripts/agents/loop.sh",
+    "agent:notify": "bash scripts/agents/notify.sh",
+    "agent:hourly:install": "bash scripts/agents/install-hourly-mac.sh",
+    "agent:hourly:uninstall": "bash scripts/agents/uninstall-hourly-mac.sh"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
