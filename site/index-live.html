@@ -11,14 +11,38 @@
       <div class="nav-shell">
         <div class="nav-left-pill">
           <a class="brand" href="#">
-            <img class="brand__logo" src="./assets/figma/10d24f01-b529-4c2b-83d6-ad4f8bc19cf3.svg" alt="Teletype" width="133" height="30" />
+            <img src="https://www.figma.com/api/mcp/asset/c8562d4f-4a48-4c19-90bf-f063f721d83a" alt="Teletype" />
           </a>
           <nav class="menu">
-            <a href="#products">Функции <span class="menu-caret">▾</span></a>
+            <div class="menu-dropdown" data-menu-dropdown>
+              <button class="menu-trigger" type="button" aria-expanded="false">
+                Функции <span>⌄</span>
+              </button>
+              <div class="menu-panel">
+                <a href="#products">Диалог-центр</a>
+                <a href="#products">Каналы</a>
+                <a href="#products">AI-помощник для операторов</a>
+                <a href="#products">AI-оператор</a>
+                <a href="#products">Аналитика</a>
+                <a href="#products">Интеграции</a>
+                <a href="#products">Рассылки</a>
+                <a href="#products">Сервисные сообщения</a>
+                <a href="#products">API и Вебхуки</a>
+                <a href="#products">Все функции</a>
+              </div>
+            </div>
             <a href="#prices">Тарифы</a>
             <a href="#cases">Клиенты</a>
             <a href="#corporate">Корпорациям</a>
-            <a href="#footer">Помощь <span class="menu-caret">▾</span></a>
+            <div class="menu-dropdown menu-dropdown-help" data-menu-dropdown>
+              <button class="menu-trigger" type="button" aria-expanded="false">
+                Помощь <span>⌄</span>
+              </button>
+              <div class="menu-panel">
+                <a href="#footer">Справочный центр</a>
+                <a href="#footer">Связаться с нами</a>
+              </div>
+            </div>
           </nav>
         </div>
         <div class="nav-actions">
@@ -30,186 +54,214 @@
 
     <main>
       <section class="hero" id="hero">
-        <div class="container hero-inner">
+        <div class="hero-shell">
           <span class="badge">Новое</span>
           <h1>AI помогает оператору отвечать быстрее</h1>
 
           <div class="mockup">
             <aside class="mockup-sidebar">
-              <h3>FloraDelivery</h3>
+              <div class="mockup-head">
+                <h3>FloraDelivery</h3>
+                <span>⌕ +</span>
+              </div>
               <ul>
-                <li class="active">Назначенные <b>7</b></li>
-                <li>Неотвеченные <b>1</b></li>
-                <li>Открытые <b>95</b></li>
-                <li>Все <b>102</b></li>
+                <li class="active"><span>Назначенные мне</span><b>7</b></li>
+                <li><span>Неотвеченные</span><b>1</b></li>
+                <li><span>Открытые</span><b>95</b></li>
+                <li><span>Все</span><b>102</b></li>
               </ul>
+              <ul class="channels-mini">
+                <li>Онлайн-чат <b>2230</b></li>
+                <li>WhatsApp <b>879</b></li>
+                <li>Telegram <b>45</b></li>
+              </ul>
+              <div class="settings-mini">
+                <span>Настройки</span>
+                <span>База знаний</span>
+                <span>Поддержка</span>
+                <span>Новости проекта</span>
+              </div>
             </aside>
+
             <div class="mockup-list">
-              <div class="chat-row"><span class="dot"></span> Юлия Боровикова</div>
-              <div class="chat-row"><span class="dot"></span> Салатовый кит...</div>
-              <div class="chat-row"><span class="dot"></span> Диана Рабович</div>
-              <div class="chat-row"><span class="dot"></span> Steven Sanchez</div>
+              <div class="list-head">12 открытых ▾</div>
+              <div class="chat-row active"><span class="avatar-dot"></span> Ульяна Б., Санкт-Петербург</div>
+              <div class="chat-row"><span class="avatar-dot"></span> Салатовый кит</div>
+              <div class="chat-row"><span class="avatar-dot"></span> +7 998 ...</div>
+              <div class="chat-row"><span class="avatar-dot"></span> Dina Fadeeva</div>
+              <div class="chat-row"><span class="avatar-dot"></span> Steve Sanchez</div>
+              <div class="chat-row"><span class="avatar-dot"></span> Зеленый мяч</div>
+              <div class="chat-row"><span class="avatar-dot"></span> Ульяна Б. (сдк)</div>
             </div>
+
             <div class="mockup-chat">
-              <div class="bubble">Привет...</div>
-              <div class="composer">
-                <input type="text" value="" placeholder="Сообщение..." aria-label="Сообщение" />
-                <button>Отправить</button>
-              </div>
-            </div>
-            <div class="mockup-info">
-              <div class="info-block">
-                <h4>Канал</h4>
-                <div class="chips-line">
-                  <span>WhatsApp</span>
-                  <span>Telegram</span>
+              <div class="chat-head">
+                <div>
+                  <strong>Ульяна Борунова</strong>
+                  <small>Веб-клиент</small>
                 </div>
+                <button>Закрыть</button>
               </div>
-              <div class="info-block">
-                <h4>Приоритет</h4>
-                <p>Высокий</p>
-              </div>
-              <div class="info-block">
-                <h4>AI-подсказка</h4>
-                <p>Используйте быстрый шаблон ответа для доставки.</p>
+              <div class="typing">Печатает...</div>
+              <div class="composer-wrap">
+                <div class="composer-box">
+                  <span>Ответ ▾</span>
+                  <div class="composer-actions">
+                    <span>◉</span>
+                    <button>Отправить</button>
+                  </div>
+                </div>
+                <div class="assistant-box">
+                  <span>Вопрос AI-помощнику</span>
+                  <button>↑</button>
+                </div>
               </div>
             </div>
           </div>
-          <button class="btn btn-dark btn-hero">Телетайп с AI</button>
-          <p class="hero-note">Мы всё настроим. Вы попробуете бесплатно, без привязки карты.</p>
+
+          <button class="btn btn-dark hero-cta">Телетайп с AI</button>
+          <p class="hero-note">Мы всё настроим. Вы попробуете бесплатно,<br />без привязки карты.</p>
         </div>
       </section>
 
       <section class="products" id="products">
         <div class="container">
-          <h2>Телетайп — облачный диалог-центр.</h2>
-          <p>
-            Мы собрали мессенджеры и соцсети<br />
-            в одном окне, подключили @AI,<br />
-            добавили аналитику, интеграции<br />
-            и инструменты для маркетинга
-          </p>
+          <h2>
+            Телетайп — облачный диалог-центр.<br />
+            <span>Мы собрали мессенджеры и соцсети в одном окне, подключили AI, добавили аналитику, интеграции и инструменты для маркетинга</span>
+          </h2>
 
           <div class="product-grid">
-            <article class="card product-card sender-card">
+            <article class="product-card product-mailings">
               <h3>Рассылки</h3>
-              <div class="placeholder mail"></div>
+              <img src="https://www.figma.com/api/mcp/asset/f72ec5e0-b750-47bd-9dcd-f7f9f5f9e2ef" alt="Рассылки" />
             </article>
-            <article class="card product-card dialog-card">
+
+            <article class="product-card product-dialog-center">
               <h3>Диалог-центр</h3>
-              <div class="dialog-demo">
-                <span class="avatar"><img src="./assets/figma/9f968e1e-d96a-4932-854a-501936667eb5.png" alt="" /></span>
-                <span class="line"></span>
-                <span class="avatar"><img src="./assets/figma/2761c097-bd62-4605-8fa0-8f154797c3d6.png" alt="" /></span>
-                <span class="line"></span>
-                <span class="avatar"><img src="./assets/figma/144ab52b-e03b-4bc3-b0a1-929629460a85.png" alt="" /></span>
-                <span class="line"></span>
-                <span class="avatar"><img src="./assets/figma/37042ef2-fdba-4b9b-a8c2-9b8d67be4507.png" alt="" /></span>
-                <span class="line"></span>
+              <div class="dialog-items">
+                <span></span><span></span><span></span><span></span><span></span>
               </div>
             </article>
-            <article class="card product-card channels-card">
+
+            <article class="product-card product-channels">
               <h3>Каналы</h3>
-              <div class="channels-icons">
-                <img src="./assets/figma/1a0e7ae2-ed88-485c-909d-86788d397afa.svg" alt="Telegram" />
-                <img src="./assets/figma/1902f971-f987-4c1a-bf6c-6a9141b42005.svg" alt="WhatsApp" />
-                <img src="./assets/figma/b7799d98-cd22-4f57-b14c-51320d37305e.svg" alt="VK" />
-                <img src="./assets/figma/b975cab8-374c-4647-bbea-0d7992501373.svg" alt="Почта" />
-                <img src="./assets/figma/8cd5773d-5bac-4cd6-b6e5-8ea45737c4cb.svg" alt="Список" />
+              <div class="channel-icons">
+                <img src="https://www.figma.com/api/mcp/asset/32aa6410-d7bd-49d4-9b44-193da400b403" alt="Telegram" />
+                <img src="https://www.figma.com/api/mcp/asset/422850bf-99f4-48ce-afc3-041c62eb6176" alt="Facebook" />
+                <img src="https://www.figma.com/api/mcp/asset/f33b033d-8826-494d-adc2-a68edacb8a57" alt="WhatsApp" />
+                <img src="https://www.figma.com/api/mcp/asset/1cee03e8-8742-4e46-861a-4c707eaea82c" alt="VK" />
+                <img src="https://www.figma.com/api/mcp/asset/48275e73-9839-4c12-a4ac-678d6b2d38ba" alt="SMS" />
+                <img src="https://www.figma.com/api/mcp/asset/b189ce97-46ba-49dc-9884-98d917dd7d21" alt="Mail" />
               </div>
             </article>
-            <article class="card product-card service-card">
+
+            <article class="product-card product-ai-helper">
+              <h3>AI-помощник <span>для операторов</span></h3>
+              <div class="ai-bubble">Готовлю ответ</div>
+            </article>
+
+            <article class="product-card product-service">
               <h3>Сервисные диалоги</h3>
-              <div class="service-bar"></div>
+              <img src="https://www.figma.com/api/mcp/asset/a8128d16-ecff-42c5-a16c-cfb55316394e" alt="Сервисные диалоги" />
             </article>
-            <article class="card product-card brand-strip">
-              <h3>Teletype</h3>
+
+            <article class="product-card product-brand">
+              <img src="https://www.figma.com/api/mcp/asset/a90e6944-ac48-4d74-8e6e-eab52eadd58c" alt="Teletype" />
             </article>
-            <article class="card product-card analytics-card">
+
+            <article class="product-card product-analytics">
               <h3>Аналитика</h3>
-              <div class="chart"></div>
+              <img src="https://www.figma.com/api/mcp/asset/44434088-b932-4c9b-975b-8103f781e90d" alt="График" />
             </article>
-            <article class="card product-card api-card">
+
+            <article class="product-card product-api">
               <h3>API и вебхуки</h3>
-              <code>POST /webhook { event: "message.received" }</code>
+              <code>POST /webhook { event:<br />"message.received" }</code>
             </article>
-            <article class="card product-card integrations-card">
+
+            <article class="product-card product-integrations">
               <h3>Интеграции</h3>
-              <div class="chips"><span>amoCRM</span><span>Bitrix24</span><span>Retail</span><span>Any CRM</span></div>
+              <div class="integration-badges">
+                <span>Amo</span><span>SberCRM</span><span>Bitrix24</span><span>Any other CRM</span>
+              </div>
             </article>
-            <article class="card product-card ai-card">
-              <h3>AI берёт на себя до 80% диалогов</h3>
-              <div class="bot-icon">🤖</div>
+
+            <article class="product-card product-ai-big">
+              <div class="robot">🤖</div>
+              <h3>AI берёт<br />на себя до 80%<br />диалогов</h3>
             </article>
           </div>
 
-          <button class="btn btn-dark">Все функции</button>
+          <button class="btn btn-dark section-cta">Все функции</button>
         </div>
       </section>
 
       <section class="cases" id="cases">
         <div class="container">
-          <h2>Телетайп подходит командам от стартапов до корпораций</h2>
+          <h2>Телетайп подходит командам<br />от стартапов до корпораций</h2>
           <div class="case-tabs" data-case-tabs>
             <button class="active" data-filter="all">Все</button>
             <button data-filter="saas">SaaS</button>
             <button data-filter="retail">Ритейл</button>
-            <button data-filter="shop">Онлайн-магазины</button>
+            <button data-filter="store">Онлайн-магазины</button>
             <button data-filter="delivery">Доставка</button>
             <button data-filter="travel">Путешествия</button>
-            <button data-filter="fitness">Здоровье и фитнес</button>
-            <button data-filter="education">Образование</button>
-            <button data-filter="service">Сервисы</button>
+            <button data-filter="health">Здоровье и фитнес</button>
+            <button data-filter="edu">Образование</button>
+            <button data-filter="services">Сервисы</button>
             <button data-filter="finance">Финансы</button>
           </div>
 
           <div class="case-grid" data-case-grid>
-            <article class="case-card feature" data-tag="saas retail finance">
-              <h3><span class="logo-badge">▦</span>Модульбанк</h3>
+            <article class="case-card feature" data-tag="saas finance retail">
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/ea2cdb88-b6d6-46e3-ac05-5dc16888bb9d" alt="Модульбанк" />
               <p>Онлайн-банк для предпринимателей и малого бизнеса с фокусом на цифровые сервисы.</p>
-              <div class="case-media">
-                <img src="./assets/img/case-modulbank.png" alt="Команда" />
-                <div class="case-controls">
-                  <span>❚❚</span>
-                  <span class="bar"></span>
-                </div>
-              </div>
+              <img class="case-photo" src="https://www.figma.com/api/mcp/asset/c4b5a070-1d1f-4d2c-80bb-04ab20a2a393" alt="Команда" />
             </article>
+
             <article class="case-card" data-tag="delivery">
-              <h3 class="brand">CDEK</h3>
-              <p>Международная логистическая компания, специализирующаяся на доставке.</p>
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/3e09cf6a-b5fd-49e0-aafa-544814eb1cd9" alt="CDEK" />
+              <p>Международная логистическая компания, специализирующаяся на доставке посылок и документов.</p>
             </article>
+
             <article class="case-card" data-tag="retail">
-              <h3 class="brand">X5</h3>
-              <p>Одна из крупнейших розничных компаний.</p>
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/39fdbbc5-9642-4bf7-99b6-1178b0d2c85b" alt="X5" />
+              <p>Одна из крупнейших розничных компаний, управляющая федеральными торговыми сетями.</p>
             </article>
+
             <article class="case-card" data-tag="saas">
-              <h3 class="brand">самолет</h3>
-              <p>Федеральный девелопер жилой недвижимости.</p>
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/8e2932d8-1bac-4ab8-ac54-16cb6c0ce58a" alt="Самолет" />
+              <p>Федеральный девелопер жилой недвижимости с цифровыми сервисами для клиентов.</p>
             </article>
-            <article class="case-card" data-tag="delivery shop">
+
+            <article class="case-card" data-tag="delivery store">
               <h3>Flora Delivery</h3>
-              <p>Сервис доставки цветов с поддержкой клиентов.</p>
+              <p>Сервис доставки цветов и подарков с онлайн-заказами и поддержкой клиентов.</p>
             </article>
-            <article class="case-card" data-tag="delivery">
-              <h3 class="brand">Чек</h3>
-              <p>Автоматизация заказов и коммуникаций в доставке еды.</p>
+
+            <article class="case-card" data-tag="delivery services">
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/39217ca1-611f-488d-8d2e-67325360c459" alt="Чек Яндекс Еда" />
+              <p>Сервис для автоматизации заказов и коммуникаций в сфере доставки еды.</p>
             </article>
+
             <article class="case-card" data-tag="retail">
-              <h3 class="brand">Ашан</h3>
-              <p>Международная розничная сеть гипермаркетов.</p>
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/d6d49b73-6da2-4d5e-b216-10c7c782aa13" alt="Ашан" />
+              <p>Международная розничная сеть гипермаркетов и онлайн-торговли.</p>
             </article>
+
             <article class="case-card" data-tag="travel">
-              <h3 class="brand">Coraltravel</h3>
-              <p>Организация путешествий и отдыха.</p>
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/aac83067-2566-4b9f-8f6b-504598c403ec" alt="Coral Travel" />
+              <p>Туроператор, предоставляющий услуги по организации путешествий и отдыха.</p>
             </article>
-            <article class="case-card" data-tag="retail delivery shop">
-              <h3 class="brand">Flor2u.ru</h3>
-              <p>Онлайн-магазин цветов с клиентской поддержкой.</p>
+
+            <article class="case-card" data-tag="store delivery">
+              <img class="case-logo" src="https://www.figma.com/api/mcp/asset/2a61c481-573c-4da1-8320-25a86be3e138" alt="Flor2u" />
+              <p>Онлайн-магазин цветов с доставкой по России и клиентской поддержкой.</p>
             </article>
           </div>
 
-          <button class="btn btn-dark">Клиенты о нас</button>
+          <button class="btn btn-dark section-cta">Клиенты о нас</button>
         </div>
       </section>
 
@@ -233,27 +285,34 @@
       <section class="corporate" id="corporate">
         <div class="container">
           <div class="corp-shell">
+            <img class="corp-grid-v" src="https://www.figma.com/api/mcp/asset/8edb117f-8366-489c-b304-0a0a963f16a1" alt="" />
+            <img class="corp-grid-h" src="https://www.figma.com/api/mcp/asset/c7c82715-8421-481d-8c76-656f57e81639" alt="" />
+            <img class="corp-shadow-l" src="https://www.figma.com/api/mcp/asset/9ca3a7ca-0bbd-46f7-bd65-3008e1f306f9" alt="" />
+            <img class="corp-shadow-t" src="https://www.figma.com/api/mcp/asset/554e94a7-937b-404e-8fd1-0460d3f3fb2a" alt="" />
+
             <div class="corp-left">
               <h2>Enterprise-решение, выстроенное под вашу архитектуру и масштаб</h2>
-              <button class="btn btn-light">▦&nbsp; Назначить онлайн-встречу</button>
+              <button class="btn btn-light">Назначить онлайн-встречу</button>
             </div>
-            <div class="corp-right">
-              <span>Гибкая архитектура</span>
+
+            <div class="corp-cloud" aria-hidden="true"></div>
+
+            <div class="corp-tags">
+              <span>Гибкая архитктура</span>
+              <span>Собственная инфраструктура</span>
               <span>Enterprise SLA</span>
-              <span>Собственная инфраструктура</span>
-              <span>Сложные интеграции</span>
-              <span>Единый контур</span>
               <span>Частное облако</span>
+              <span>Сложные интеграции</span>
               <span>Ролевой доступ</span>
+              <span>Единый контур</span>
               <span>Глубокая аналитика</span>
-              <span>Собственная инфраструктура</span>
               <span>Контроль процессов</span>
               <span>Индивидуальные сценарии</span>
               <span>Масштабируемость</span>
               <span>Долгосрочная стабильность</span>
               <span>Высокие нагрузки</span>
-              <span>Отказоустойчивость</span>
               <span>Безопасность данных</span>
+              <span>Отказоустойчивость</span>
             </div>
           </div>
         </div>
@@ -263,7 +322,7 @@
     <footer class="footer" id="footer">
       <div class="container">
         <div class="footer-top">
-          <img src="./assets/figma/10d24f01-b529-4c2b-83d6-ad4f8bc19cf3.svg" alt="Teletype" />
+          <img src="https://www.figma.com/api/mcp/asset/fa12bc7a-3cf8-47c8-beb3-5cbc74bb3662" alt="Teletype" />
           <p>Сила в коммуникациях</p>
         </div>
 
@@ -304,7 +363,7 @@
             <h4>Компания</h4>
             <a href="#">Цены</a>
             <a href="#">Корпорациям</a>
-            <a href="#">Благие дела ♡</a>
+            <a href="#">Благие дела</a>
             <a href="#">Вакансии</a>
             <a href="#">Партнёрам</a>
             <a href="#">Контакты</a>
@@ -313,38 +372,30 @@
         </div>
 
         <div class="footer-badges">
-          <div class="badge-sk">
-            <img src="./assets/figma/013b3171-f7a9-44d3-9038-86d46ca8dd16.png" alt="Участник" />
-          </div>
-          <div class="badge-registry">
-            <img src="./assets/figma/255ca8d0-5db6-4468-9fa4-e9c4d91d1c7b.png" alt="Реестр ПО" />
-            <span>Входит в реестр Российского ПО</span>
-          </div>
+          <div class="sk-badge"><img src="https://www.figma.com/api/mcp/asset/898464cd-9dc1-4fd9-a29f-b254d12ba814" alt="SK" />Участник</div>
+          <div class="registry-badge"><img src="https://www.figma.com/api/mcp/asset/1f81ceb8-0311-441c-8add-2fad9dd365b7" alt="Реестр ПО" />Входит в реестр Российского ПО</div>
         </div>
 
-        <div class="footer-bottom contacts">
+        <div class="footer-contacts">
           <p>© 2018—2026, ООО «Телетайп»</p>
           <p>+7 (495) 156-10-68</p>
           <p>hello@teletype.app</p>
-          <a href="#" class="contact-link"><img src="./assets/figma/1099c7f7-b212-4e6e-8b34-31c73b0b340e.svg" alt="" />Телеграм</a>
-          <a href="#" class="contact-link"><img src="./assets/figma/3198e6a0-9d99-4667-a96c-70e57518230b.svg" alt="" />WhatsApp</a>
+          <a href="#">Телеграм</a>
+          <a href="#">WhatsApp</a>
         </div>
 
-        <p class="footer-disclaimer">
+        <p class="footer-legal">
           Компания Meta Platforms Inc. признана экстремистской организацией, и ее деятельность запрещена на территории РФ.
           WhatsApp, Facebook и Instagram являются ее продуктами. Реализация Facebook и Instagram на территории РФ запрещена.
         </p>
 
-        <div class="footer-bottom footer-actions">
-          <button class="status-chip"><img src="./assets/figma/ac595d98-0a55-4559-b16f-d83e083e40df.svg" alt="" />Работает исправно <span class="dot-live"></span></button>
+        <div class="footer-bottom">
+          <div class="status">Работает исправно <span>•</span></div>
           <div class="stores">
-            <img src="./assets/figma/c8e23b3b-5124-4c82-93a5-65d507452bce.svg" alt="App Store" />
-            <img src="./assets/figma/90800489-b222-4406-9945-f11461eb3fb1.svg" alt="Google Play" />
+            <img src="https://www.figma.com/api/mcp/asset/d86455a6-a8a6-4db6-95c7-c2f3923c5b85" alt="App Store" />
+            <img src="https://www.figma.com/api/mcp/asset/509d71d9-5547-4ae0-aeee-009cdf2a607d" alt="Google Play" />
           </div>
-          <div class="lang-switch">
-            <button class="active">RU</button>
-            <button>EN</button>
-          </div>
+          <div class="lang-toggle"><button class="active">RU</button><button>EN</button></div>
         </div>
       </div>
     </footer>
