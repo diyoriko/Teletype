@@ -36,6 +36,7 @@ BUILD_STATUS="failed"
 VISUAL_STATUS="failed"
 VISUAL_SUMMARY='{"status":"failed","reason":"not_run"}'
 SCREENSHOT_BROWSER=""
+STATIC_ANALYSIS='{"baseline_embedded": false, "remote_figma_asset_refs": 0}'
 
 run_step() {
   local step_name="$1"
@@ -56,6 +57,41 @@ fi
 if run_step build npm run build; then
   BUILD_STATUS="passed"
 fi
+
+STATIC_ANALYSIS="$(python3 - "$ROOT_DIR" "$BASELINE_PATH" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+root = Path(sys.argv[1])
+baseline = Path(sys.argv[2])
+needle = baseline.name
+site_files = [
+    root / "site" / "index.html",
+    root / "site" / "styles.css",
+    root / "site" / "script.js",
+    root / "site" / "index-live.html",
+    root / "site" / "styles-live.css",
+    root / "site" / "script-live.js",
+]
+
+baseline_embedded = False
+remote_refs = 0
+
+for path in site_files:
+    if not path.exists():
+        continue
+    text = path.read_text(encoding="utf-8")
+    if needle in text or "/assets/figma/baselines/" in text:
+        baseline_embedded = True
+    remote_refs += text.count("https://www.figma.com/api/mcp/asset")
+
+print(json.dumps({
+    "baseline_embedded": baseline_embedded,
+    "remote_figma_asset_refs": remote_refs,
+}, ensure_ascii=False))
+PY
+)"
 
 if [[ -f "$BASELINE_PATH" ]]; then
   SERVER_LOG="$REPORT_DIR/server.log"
@@ -108,7 +144,7 @@ if [[ "$LINT_STATUS" != "passed" || "$BUILD_STATUS" != "passed" || "$VISUAL_STAT
   OVERALL="failed"
 fi
 
-SCREENSHOT_BROWSER="${SCREENSHOT_BROWSER}" FIGMA_FILE_KEY="${FIGMA_FILE_KEY}" FIGMA_NODE_ID="${FIGMA_NODE_ID}" python3 - "$REPORT_PATH" "$TIMESTAMP" "$OVERALL" "$LINT_STATUS" "$BUILD_STATUS" "$VISUAL_STATUS" "$BASELINE_PATH" "$ACTUAL_PNG" "$LOG_PATH" "$VISUAL_SUMMARY" <<'PY'
+SCREENSHOT_BROWSER="${SCREENSHOT_BROWSER}" FIGMA_FILE_KEY="${FIGMA_FILE_KEY}" FIGMA_NODE_ID="${FIGMA_NODE_ID}" python3 - "$REPORT_PATH" "$TIMESTAMP" "$OVERALL" "$LINT_STATUS" "$BUILD_STATUS" "$VISUAL_STATUS" "$BASELINE_PATH" "$ACTUAL_PNG" "$LOG_PATH" "$VISUAL_SUMMARY" "$STATIC_ANALYSIS" <<'PY'
 import json
 import os
 import sys
@@ -125,7 +161,20 @@ from pathlib import Path
     actual_png,
     log_path,
     visual_summary,
+    static_analysis,
 ) = sys.argv[1:]
+
+analysis = json.loads(static_analysis)
+visual = json.loads(visual_summary)
+
+if analysis.get("baseline_embedded"):
+    overall = "failed"
+    visual_status = "failed"
+    visual = {
+        "status": "failed",
+        "reason": "baseline_embedded",
+        "message": "Baseline PNG referenced from production files.",
+    }
 
 report = {
     "timestamp": timestamp,
@@ -147,11 +196,11 @@ report = {
         "file_key": os.environ.get("FIGMA_FILE_KEY", ""),
         "node_id": os.environ.get("FIGMA_NODE_ID", ""),
     },
-    "visual": json.loads(visual_summary),
+    "static_analysis": analysis,
+    "visual": visual,
 }
 
 recommended_fixes = []
-visual = report["visual"]
 if visual.get("reason") == "dimension_mismatch":
     exp = visual.get("expected", {})
     act = visual.get("actual", {})
@@ -169,9 +218,17 @@ if visual.get("reason") == "screenshot_failed":
     recommended_fixes.append(
         "Screenshot не снят. Перезапусти tester; если повторяется, проверь доступность headless браузера."
     )
+if visual.get("reason") == "baseline_embedded":
+    recommended_fixes.append(
+        "Baseline PNG используется в production-файлах. Убери любые ссылки на baseline из site/*.html, site/*.css и site/*.js."
+    )
 if visual.get("diff_ratio") is not None:
     recommended_fixes.append(
         f"Pixel diff: {visual['diff_ratio']:.4%} при лимите {visual.get('max_diff_ratio', 0):.4%}."
+    )
+if analysis.get("remote_figma_asset_refs"):
+    recommended_fixes.append(
+        f"Найдено {analysis['remote_figma_asset_refs']} ссылок на figma.com/api/mcp/asset. Для публичной страницы замени их на локальные ассеты из репозитория."
     )
 
 report["recommended_fixes"] = recommended_fixes

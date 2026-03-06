@@ -53,6 +53,7 @@ failed_names = ', '.join(c.get('name', 'unknown') for c in failed) if failed els
 visual = report.get('visual', {})
 recommended = report.get('recommended_fixes', [])
 figma = report.get('figma', {})
+static_analysis = report.get('static_analysis', {})
 
 prompt = f"""Ты агент Developer для этого репозитория.
 
@@ -60,6 +61,7 @@ prompt = f"""Ты агент Developer для этого репозитория.
 - Нужно исправить всё, что вернул Tester.
 - Не трогай лишние файлы.
 - Работай в первую очередь с site/index.html, site/styles.css, site/script.js.
+- В репозитории есть вспомогательные версии site/index-live.html, site/styles-live.css, site/script-live.js. Используй их как локальный референс, если они помогают восстановить недостающие блоки или поведение.
 
 Текущий отчет Tester:
 - Общий статус: {report.get('status')}
@@ -69,6 +71,7 @@ prompt = f"""Ты агент Developer для этого репозитория.
 - Actual screenshot: {report.get('artifacts', {}).get('actual')}
 - Figma file key: {figma.get('file_key')}
 - Figma node id: {figma.get('node_id')}
+- Static analysis: {json.dumps(static_analysis, ensure_ascii=False)}
 - Рекомендованные правки от Tester: {json.dumps(recommended, ensure_ascii=False)}
 
 Задача:
@@ -79,6 +82,10 @@ prompt = f"""Ты агент Developer для этого репозитория.
 Важно:
 - Цель: 1:1 визуальное соответствие Figma baseline.
 - Не добавляй новых зависимостей без необходимости.
+- Baseline PNG нужен только как эталон сравнения. Никогда не вставляй baseline PNG в production HTML/CSS/JS и не подменяй страницу одним изображением.
+- Не заменяй реальную верстку скриншотом, data URI, canvas-отрисовкой или единичным <img>.
+- Сохрани рабочую DOM-структуру и интерактивность секций.
+- Если есть ссылки на https://www.figma.com/api/mcp/asset, по возможности замени их на локальные ассеты из репозитория.
 """
 
 out.parent.mkdir(parents=True, exist_ok=True)

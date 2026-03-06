@@ -5,3 +5,4 @@ dist/
 *.tsbuildinfo
 test-results/
 __pycache__/
+output/
