@@ -108,65 +108,131 @@
           </h2>
 
           <div class="product-grid">
-            <article class="product-card product-mailings">
-              <h3>Рассылки</h3>
-              <img src="./assets/figma/f72ec5e0-b750-47bd-9dcd-f7f9f5f9e2ef.png" alt="Рассылки" />
-            </article>
+            <div class="product-column product-column-left">
+              <article class="product-card product-mailings">
+                <h3>Рассылки</h3>
+                <div class="mailing-art" aria-hidden="true">
+                  <div class="mailing-spiral"></div>
+                  <div class="mailing-envelope mailing-envelope-back"></div>
+                  <div class="mailing-envelope mailing-envelope-front">
+                    <div class="mailing-seal"></div>
+                    <div class="mailing-badge">
+                      <img src="./assets/figma/c8562d4f-4a48-4c19-90bf-f063f721d83a.svg" alt="" />
+                    </div>
+                    <div class="mailing-swoosh"></div>
+                    <div class="mailing-lines mailing-lines-left"></div>
+                    <div class="mailing-lines mailing-lines-right"></div>
+                  </div>
+                </div>
+              </article>
 
-            <article class="product-card product-dialog-center">
-              <h3>Диалог-центр</h3>
-              <div class="dialog-items">
-                <span></span><span></span><span></span><span></span><span></span>
+              <article class="product-card product-service">
+                <h3>Сервисные диалоги</h3>
+                <div class="service-preview">
+                  <div class="service-avatar">
+                    <span>T</span>
+                  </div>
+                  <div class="service-copy">
+                    <div class="service-meta">
+                      <strong>Teletype</strong>
+                      <span>Сегодня</span>
+                    </div>
+                    <p>Ваш Заказ №1406 оформлен и скоро будет передан в доставку...</p>
+                  </div>
+                  <div class="service-counter">1</div>
+                </div>
+              </article>
+
+              <article class="product-card product-api">
+                <h3>API и вебхуки</h3>
+                <code>POST /webhook { event:<br />"message.received" }</code>
+              </article>
+            </div>
+
+            <div class="product-column product-column-middle">
+              <div class="product-middle-top">
+                <article class="product-card product-dialog-center">
+                  <h3>Диалог-центр</h3>
+                  <div class="dialog-center-shell">
+                    <div class="dialog-center-list">
+                      <span class="dialog-line long"></span>
+                      <span class="dialog-line mid"></span>
+                      <span class="dialog-line short"></span>
+                      <span class="dialog-line mid"></span>
+                      <span class="dialog-line short"></span>
+                    </div>
+                    <div class="dialog-center-devices">
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="product-card product-channels">
+                  <h3>Каналы</h3>
+                  <div class="channels-board">
+                    <div class="channel-tile tg"><img src="./assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg" alt="Telegram" /></div>
+                    <div class="channel-tile fb"><img src="./assets/figma/422850bf-99f4-48ce-afc3-041c62eb6176.svg" alt="Facebook" /></div>
+                    <div class="channel-tile wa"><img src="./assets/figma/f33b033d-8826-494d-adc2-a68edacb8a57.svg" alt="WhatsApp" /></div>
+                    <div class="channel-tile avito"><span></span><span></span><span></span><span></span></div>
+                    <div class="channel-tile ig"><span></span></div>
+                    <div class="channel-tile vk"><img src="./assets/figma/1cee03e8-8742-4e46-861a-4c707eaea82c.svg" alt="VK" /></div>
+                    <div class="channel-tile mail"><img src="./assets/figma/b189ce97-46ba-49dc-9884-98d917dd7d21.svg" alt="Mail" /></div>
+                    <div class="channel-tile max"><img src="./assets/figma/bca36164-c642-4cf2-9e89-eb72cf41ec88.svg" alt="MAX" /></div>
+                    <div class="channel-tile chat"><img src="./assets/figma/48275e73-9839-4c12-a4ac-678d6b2d38ba.svg" alt="Chat" /></div>
+                  </div>
+                </article>
               </div>
-            </article>
 
-            <article class="product-card product-channels">
-              <h3>Каналы</h3>
-              <div class="channel-icons">
-                <img src="./assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg" alt="Telegram" />
-                <img src="./assets/figma/422850bf-99f4-48ce-afc3-041c62eb6176.svg" alt="Facebook" />
-                <img src="./assets/figma/f33b033d-8826-494d-adc2-a68edacb8a57.svg" alt="WhatsApp" />
-                <img src="./assets/figma/1cee03e8-8742-4e46-861a-4c707eaea82c.svg" alt="VK" />
-                <img src="./assets/figma/48275e73-9839-4c12-a4ac-678d6b2d38ba.svg" alt="SMS" />
-                <img src="./assets/figma/b189ce97-46ba-49dc-9884-98d917dd7d21.svg" alt="Mail" />
-              </div>
-            </article>
+              <article class="product-card product-brand">
+                <img src="./assets/figma/a90e6944-ac48-4d74-8e6e-eab52eadd58c.svg" alt="Teletype" />
+              </article>
 
-            <article class="product-card product-ai-helper">
-              <h3>AI-помощник <span>для операторов</span></h3>
-              <div class="ai-bubble">Готовлю ответ</div>
-            </article>
+              <article class="product-card product-integrations">
+                <div class="integration-flow">
+                  <div class="integration-new-dialog">
+                    <img src="./assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg" alt="" />
+                    <span>Новый диалог</span>
+                  </div>
+                  <div class="integration-mark">
+                    <span>T</span>
+                  </div>
+                  <div class="integration-connector connector-top"></div>
+                  <div class="integration-connector connector-mid"></div>
+                  <div class="integration-stack">
+                    <span class="crm-pill light">SberCRM</span>
+                    <span class="crm-pill rose">Retail</span>
+                    <span class="crm-pill cyan">amo</span>
+                    <span class="crm-pill blue">Bitrix24</span>
+                    <span class="crm-pill dark">Any other CRM</span>
+                  </div>
+                </div>
+                <h3>Интеграции</h3>
+              </article>
+            </div>
 
-            <article class="product-card product-service">
-              <h3>Сервисные диалоги</h3>
-              <img src="./assets/figma/a8128d16-ecff-42c5-a16c-cfb55316394e.png" alt="Сервисные диалоги" />
-            </article>
+            <div class="product-column product-column-right">
+              <article class="product-card product-ai-helper">
+                <h3>AI-помощник <span>для операторов</span></h3>
+                <div class="ai-helper-bubble">
+                  <div class="ai-helper-head">
+                    <span class="ai-bot-icon"></span>
+                    <strong>Готовлю ответ</strong>
+                  </div>
+                  <div class="ai-helper-divider"></div>
+                </div>
+              </article>
 
-            <article class="product-card product-brand">
-              <img src="./assets/figma/a90e6944-ac48-4d74-8e6e-eab52eadd58c.svg" alt="Teletype" />
-            </article>
+              <article class="product-card product-analytics">
+                <h3>Аналитика</h3>
+                <img src="./assets/figma/44434088-b932-4c9b-975b-8103f781e90d.svg" alt="График" />
+              </article>
 
-            <article class="product-card product-analytics">
-              <h3>Аналитика</h3>
-              <img src="./assets/figma/44434088-b932-4c9b-975b-8103f781e90d.svg" alt="График" />
-            </article>
-
-            <article class="product-card product-api">
-              <h3>API и вебхуки</h3>
-              <code>POST /webhook { event:<br />"message.received" }</code>
-            </article>
-
-            <article class="product-card product-integrations">
-              <h3>Интеграции</h3>
-              <div class="integration-badges">
-                <span>Amo</span><span>SberCRM</span><span>Bitrix24</span><span>Any other CRM</span>
-              </div>
-            </article>
-
-            <article class="product-card product-ai-big">
-              <div class="robot">🤖</div>
-              <h3>AI берёт<br />на себя до 80%<br />диалогов</h3>
-            </article>
+              <article class="product-card product-ai-big">
+                <div class="robot">🤖</div>
+                <h3>AI берёт<br />на себя до 80%<br />диалогов</h3>
+              </article>
+            </div>
           </div>
 
           <button class="btn btn-dark section-cta">Все функции</button>
