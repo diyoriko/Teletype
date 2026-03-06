@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - Codex
   workflow_dispatch:
 
 permissions:
@@ -21,11 +22,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch branches
+        run: git fetch origin main Codex --depth=1
+
+      - name: Build Pages bundle
+        run: |
+          rm -rf _site
+          mkdir -p _site _site/codex
+          git archive origin/main site | tar -x -C _site --strip-components=1
+          git archive origin/Codex site | tar -x -C _site/codex --strip-components=1
+          touch _site/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _site
 
   publish:
     runs-on: ubuntu-latest
