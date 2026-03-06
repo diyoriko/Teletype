@@ -70,9 +70,6 @@ site_files = [
     root / "site" / "index.html",
     root / "site" / "styles.css",
     root / "site" / "script.js",
-    root / "site" / "index-live.html",
-    root / "site" / "styles-live.css",
-    root / "site" / "script-live.js",
 ]
 
 baseline_embedded = False

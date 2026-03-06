@@ -86,7 +86,7 @@ const channelData = [
     active: true,
     qty: 1,
     hasQty: true,
-    icon: "https://www.figma.com/api/mcp/asset/eb659d4a-bb18-4a38-86eb-6ec26edc1c41",
+    icon: "./assets/figma/eb659d4a-bb18-4a38-86eb-6ec26edc1c41.svg",
   },
   {
     id: "vk",
@@ -95,7 +95,7 @@ const channelData = [
     active: true,
     qty: 1,
     hasQty: true,
-    icon: "https://www.figma.com/api/mcp/asset/85c88f6b-5ce7-4402-a9be-647870c3e60b",
+    icon: "./assets/figma/85c88f6b-5ce7-4402-a9be-647870c3e60b.svg",
   },
   {
     id: "chat",
@@ -111,21 +111,21 @@ const channelData = [
     label: "MAX",
     price: 4500,
     active: false,
-    icon: "https://www.figma.com/api/mcp/asset/bca36164-c642-4cf2-9e89-eb72cf41ec88",
+    icon: "./assets/figma/bca36164-c642-4cf2-9e89-eb72cf41ec88.svg",
   },
   {
     id: "mail",
     label: "Почта",
     price: 660,
     active: false,
-    icon: "https://www.figma.com/api/mcp/asset/d4cbd91f-93e5-4518-832d-3541e2e230a5",
+    icon: "./assets/figma/d4cbd91f-93e5-4518-832d-3541e2e230a5.svg",
   },
   {
     id: "tg",
     label: "Telegram",
     price: 4500,
     active: false,
-    icon: "https://www.figma.com/api/mcp/asset/b5b6f9df-b75e-4c70-8eab-0f5c0cdf6812",
+    icon: "./assets/figma/b5b6f9df-b75e-4c70-8eab-0f5c0cdf6812.svg",
   },
 ];
 

@@ -88,6 +88,7 @@ button {
   top: 0;
   z-index: 30;
   padding-top: 20px;
+  padding-bottom: 20px;
   background: linear-gradient(to bottom, rgba(239, 237, 226, 0.95), rgba(239, 237, 226, 0));
   backdrop-filter: blur(2px);
 }
@@ -197,12 +198,13 @@ button {
 }
 
 .hero {
-  padding: 100px 0 0;
+  padding: 100px 0 200px;
 }
 
 .hero-shell {
   width: min(1512px, 100%);
   margin: 0 auto;
+  min-height: 1904px;
   padding: 100px 50px 200px;
   border-radius: 100px;
   background: linear-gradient(180deg, rgba(255, 251, 240, 0.5) 0%, rgba(0, 204, 55, 0.1) 25%, rgba(0, 204, 55, 0.5) 75%, #00cc37 100%);
@@ -837,6 +839,8 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr 354px;
   gap: 20px;
+  min-height: 1261px;
+  align-items: stretch;
 }
 
 .pricing-column {
@@ -844,6 +848,7 @@ button {
   border-radius: var(--radius-l);
   border: 1px solid var(--card-line);
   padding: 25px;
+  height: 100%;
 }
 
 .pricing-column h3,
@@ -958,6 +963,7 @@ button {
   padding: 25px;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 .summary::after {
@@ -1015,7 +1021,7 @@ button {
 }
 
 .corporate {
-  padding-bottom: 0;
+  padding-bottom: 200px;
 }
 
 .corp-shell {
@@ -1221,7 +1227,7 @@ button {
 }
 
 .footer {
-  padding: 200px 0 100px;
+  padding: 200px 0 145px;
   background: linear-gradient(180deg, #fef9ea 0%, #ddccb0 100%);
 }
 
@@ -1383,8 +1389,15 @@ button {
     width: min(1412px, calc(100% - 48px));
   }
 
+  .top-nav,
+  .hero,
+  .corporate {
+    padding-bottom: 0;
+  }
+
   .hero-shell {
     border-radius: 60px;
+    min-height: 0;
     padding: 60px 24px 100px;
   }
 
@@ -1506,6 +1519,7 @@ button {
   }
 
   .pricing-layout {
+    min-height: 0;
     grid-template-columns: 1fr;
   }
 
@@ -1566,6 +1580,7 @@ button {
   .top-nav {
     position: static;
     padding-top: 12px;
+    padding-bottom: 0;
     background: transparent;
     backdrop-filter: none;
   }
@@ -1605,11 +1620,13 @@ button {
 
   .hero {
     padding-top: 20px;
+    padding-bottom: 0;
   }
 
   .hero-shell {
     width: calc(100% - 24px);
     border-radius: 40px;
+    min-height: 0;
     padding: 40px 14px 60px;
     gap: 16px;
   }
