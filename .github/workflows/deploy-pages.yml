@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
-      - Codex
+      - teletype-main
+      - teletype-sandbox
   workflow_dispatch:
 
 permissions:
@@ -26,14 +26,14 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch branches
-        run: git fetch origin main Codex --depth=1
+        run: git fetch origin teletype-main teletype-sandbox --depth=1
 
       - name: Build Pages bundle
         run: |
           rm -rf _site
-          mkdir -p _site _site/codex
-          git archive origin/main site | tar -x -C _site --strip-components=1
-          git archive origin/Codex site | tar -x -C _site/codex --strip-components=1
+          mkdir -p _site _site/sandbox
+          git archive origin/teletype-main site | tar -x -C _site --strip-components=1
+          git archive origin/teletype-sandbox site | tar -x -C _site/sandbox --strip-components=1
           touch _site/.nojekyll
 
       - name: Upload artifact

@@ -1,9 +1,2 @@
-node_modules/
-dist/
-.vite/
 .DS_Store
-*.tsbuildinfo
-test-results/
-__pycache__/
-output/
-.playwright-cli/
+node_modules/
