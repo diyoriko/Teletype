@@ -1739,16 +1739,12 @@ img.ai-bot-icon {
 
 .pricing-column h3,
 .summary h3 {
-  margin: 0;
+  margin: 0 0 25px;
   padding: 35px 0 15px;
   font-size: 30px;
   line-height: 1;
   font-weight: 400;
   border-bottom: 1px solid var(--card-line);
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 2;
 }
 
 .price-row {
@@ -1878,18 +1874,6 @@ img.ai-bot-icon {
   position: relative;
   overflow: hidden;
   height: 100%;
-}
-
-.summary::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -18px;
-  width: 200px;
-  height: 50px;
-  transform: translateX(-50%);
-  background: #fef9ea;
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 
 .summary ul {
@@ -2186,7 +2170,7 @@ img.ai-bot-icon {
 }
 
 .footer {
-  padding: 200px 50px 100px;
+  padding: 200px 0 100px;
   background: linear-gradient(180deg, #fef9ea 0%, #ddccb0 100%);
 }
 
