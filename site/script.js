@@ -1,3 +1,96 @@
+// Dropdown functionality for mobile (touch support)
+const dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
+dropdownWrappers.forEach((wrapper) => {
+  const link = wrapper.querySelector('a');
+  const dropdown = wrapper.querySelector('.dropdown');
+
+  if (window.innerWidth <= 900) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = dropdown.style.opacity === '1';
+      if (isOpen) {
+        dropdown.style.opacity = '0';
+        dropdown.style.pointerEvents = 'none';
+        dropdown.style.transform = 'translateY(8px)';
+      } else {
+        dropdown.style.opacity = '1';
+        dropdown.style.pointerEvents = 'auto';
+        dropdown.style.transform = 'translateY(0)';
+      }
+    });
+  }
+});
+
+// Integration label cycling
+const integrationSpan = document.querySelector('.integration-new-dialog span');
+if (integrationSpan) {
+  const labels = [
+    'Новый диалог',
+    'Лид с Авито',
+    'Заказ с сайта',
+    'SMS уведомление'
+  ];
+  let currentLabelIndex = 0;
+
+  setInterval(() => {
+    currentLabelIndex = (currentLabelIndex + 1) % labels.length;
+    integrationSpan.textContent = labels[currentLabelIndex];
+
+    // Fade out and in
+    integrationSpan.style.opacity = '0.3';
+    setTimeout(() => {
+      integrationSpan.style.opacity = '1';
+    }, 250);
+  }, 2500);
+}
+
+// Hero chat animation sequence
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const chatMessages = document.querySelector('.chat-messages');
+    const typingIndicator = document.querySelector('.typing-indicator');
+    const composerWrap = document.querySelector('.composer-wrap');
+
+    if (chatMessages) {
+      const bubbles = chatMessages.querySelectorAll('.message-bubble');
+
+      // Show first bubble with animation
+      if (bubbles[0]) {
+        bubbles[0].style.animation = 'fadeInUp 0.5s ease forwards';
+      }
+
+      // After first message, show typing indicator
+      setTimeout(() => {
+        if (typingIndicator) {
+          typingIndicator.style.animation = 'fadeInUp 0.5s ease forwards';
+        }
+
+        // After typing, show operator response
+        setTimeout(() => {
+          if (bubbles[1]) {
+            bubbles[1].style.animation = 'fadeInUp 0.5s ease forwards';
+          }
+
+          // After operator message, hide typing indicator and show composer suggestion
+          setTimeout(() => {
+            if (typingIndicator) {
+              typingIndicator.style.animation = 'fadeOutDown 0.3s ease forwards';
+              typingIndicator.style.display = 'none';
+            }
+
+            // Auto-fill composer with suggestion
+            const composerBox = composerWrap.querySelector('.composer-box span');
+            if (composerBox) {
+              composerBox.textContent = 'Спасибо за обращение! Если у вас есть ещё вопросы...';
+              composerBox.style.animation = 'fadeInUp 0.5s ease forwards';
+            }
+          }, 500);
+        }, 1500);
+      }, 800);
+    }
+  }, 800);
+});
+
 const caseTabs = document.querySelector("[data-case-tabs]");
 const caseGrid = document.querySelector("[data-case-grid]");
 
