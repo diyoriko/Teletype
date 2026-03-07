@@ -116,7 +116,6 @@ button {
   border-radius: var(--radius-pill);
   background: rgba(255, 251, 240, 0.75);
   min-height: 74px;
-  flex: 1;
 }
 
 .brand img {
