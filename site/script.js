@@ -144,10 +144,17 @@ if (caseTabs && caseGrid) {
     caseTabs.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
 
-    caseGrid.querySelectorAll(".case-card").forEach((card) => {
+    const cards = caseGrid.querySelectorAll(".case-card");
+    cards.forEach((card) => {
       const tags = (card.dataset.tag || "").split(" ").filter(Boolean);
       const visible = filter === "all" || tags.includes(filter);
-      card.style.display = visible ? "grid" : "none";
+      if (visible) {
+        card.style.display = "grid";
+        card.style.animation = "staggerIn 0.3s ease-out both";
+      } else {
+        card.style.display = "none";
+        card.style.animation = "";
+      }
     });
   });
 }
