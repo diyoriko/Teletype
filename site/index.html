@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teletype Landing 2026</title>
+    <title>Телетайп — облачный диалог-центр</title>
+    <meta name="description" content="Подключите все мессенджеры к Телетайп. AI помогает оператору отвечать быстрее." />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Телетайп — облачный диалог-центр" />
+    <meta property="og:description" content="Подключите все мессенджеры к Телетайп. AI помогает оператору отвечать быстрее." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://diyoriko.github.io/Teletype/" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Телетайп — облачный диалог-центр" />
+    <meta name="twitter:description" content="Подключите все мессенджеры к Телетайп. AI помогает оператору отвечать быстрее." />
+
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -13,7 +27,7 @@
           <a class="brand" href="#">
             <img src="./assets/figma/c8562d4f-4a48-4c19-90bf-f063f721d83a.svg" alt="Teletype" />
           </a>
-          <nav class="menu">
+          <nav class="menu" role="navigation">
             <div class="dropdown-wrapper">
               <a href="#products">Функции <span>⌄</span></a>
               <div class="dropdown">
@@ -53,83 +67,196 @@
     <main>
       <section class="hero" id="hero">
         <div class="hero-shell">
-          <span class="badge">Новое</span>
-          <h1>AI помогает оператору отвечать быстрее</h1>
+          <div class="hero-header">
+            <span class="badge">Новое</span>
+            <h1>AI помогает оператору отвечать быстрее</h1>
+          </div>
 
-          <div class="mockup">
-            <aside class="mockup-sidebar">
-              <div class="mockup-head">
-                <h3>FloraDelivery</h3>
-                <span>⌕ +</span>
-              </div>
-              <ul>
-                <li class="active"><span>Назначенные мне</span><b>7</b></li>
-                <li><span>Неотвеченные</span><b>1</b></li>
-                <li><span>Открытые</span><b>95</b></li>
-                <li><span>Все</span><b>102</b></li>
-              </ul>
-              <ul class="channels-mini">
-                <li>Онлайн-чат <b>2230</b></li>
-                <li>WhatsApp <b>879</b></li>
-                <li>Telegram <b>45</b></li>
-              </ul>
-              <div class="settings-mini">
-                <span>Настройки</span>
-                <span>База знаний</span>
-                <span>Поддержка</span>
-                <span>Новости проекта</span>
-              </div>
-            </aside>
-
-            <div class="mockup-list">
-              <div class="list-head">12 открытых ▾</div>
-              <div class="chat-row active"><span class="avatar-dot"></span> Ульяна Б., Санкт-Петербург</div>
-              <div class="chat-row"><span class="avatar-dot"></span> Салатовый кит</div>
-              <div class="chat-row"><span class="avatar-dot"></span> +7 998 ...</div>
-              <div class="chat-row"><span class="avatar-dot"></span> Dina Fadeeva</div>
-              <div class="chat-row"><span class="avatar-dot"></span> Steve Sanchez</div>
-              <div class="chat-row"><span class="avatar-dot"></span> Зеленый мяч</div>
-              <div class="chat-row"><span class="avatar-dot"></span> Ульяна Б. (сдк)</div>
-            </div>
-
-            <div class="mockup-chat">
-              <div class="chat-head">
-                <div>
-                  <strong>Ульяна Борунова</strong>
-                  <small>Веб-клиент</small>
-                </div>
-                <button>Закрыть</button>
-              </div>
-              <div class="chat-messages">
-                <div class="message-bubble client-bubble">Здравствуйте! Хотела узнать статус заказа №1406</div>
-                <div class="typing-indicator">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="message-bubble operator-bubble">Спасибо за вопрос! Ваш заказ обработан и отправлен в доставку. Отслеживаемый номер: <strong>TT#87654</strong></div>
-              </div>
-              <!-- typing indicator is now animated inside chat-messages -->
-              <div class="composer-wrap">
-                <div class="composer-box">
-                  <span>Ответ ▾</span>
-                  <div class="composer-actions">
-                    <span>◉</span>
-                    <button>Отправить</button>
+          <div class="mockup-frame">
+            <div class="mockup">
+              <aside class="mockup-sidebar">
+                <div class="mockup-head">
+                  <h3>Flora Delivery</h3>
+                  <div class="mockup-head-icons">
+                    <span class="icon-btn" role="button" aria-label="Поиск">⌕</span>
+                    <span class="icon-btn" role="button" aria-label="Создать диалог">+</span>
                   </div>
                 </div>
-                <div class="assistant-box">
-                  <span>Вопрос AI-помощнику</span>
-                  <button>↑</button>
+                <ul>
+                  <li class="active"><span>Назначенные мне</span><b>7</b></li>
+                  <li><span>Неотвеченные</span><b>1</b></li>
+                  <li><span>Открытые</span><b>95</b></li>
+                  <li><span>Все</span><b>102</b></li>
+                </ul>
+                <ul class="channels-mini">
+                  <li>Онлайн-чат <b>2 230</b></li>
+                  <li>WhatsApp <b>879</b></li>
+                  <li>Telegram <b>45</b></li>
+                </ul>
+                <div class="agents-mini">
+                  <div class="agent-row"><img src="./assets/figma/avatar-ulyana.png" alt="" class="agent-avatar" /><span>Диспетчер Филипп</span></div>
+                  <div class="agent-row"><img src="./assets/figma/avatar-kit.png" alt="" class="agent-avatar" /><span>Диспетчер Анна</span></div>
+                </div>
+                <div class="settings-mini">
+                  <span>Настройки</span>
+                  <span>База знаний</span>
+                  <span>Служба поддержки</span>
+                  <span>Новости проекта</span>
+                </div>
+              </aside>
+
+              <div class="mockup-list">
+                <div class="list-head">12 открытых ▾</div>
+                <div class="chat-row active">
+                  <img src="./assets/figma/avatar-ulyana.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>Ульяна Борунова</strong>
+                    <small>Здравствуйте. Хочу заказать пионы 25 шт</small>
+                  </div>
+                  <span class="row-time">Сейчас</span>
+                </div>
+                <div class="chat-row">
+                  <img src="./assets/figma/avatar-kit.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>Салатовый кит (Москва)</strong>
+                    <small>Спасибо огромное!</small>
+                  </div>
+                  <span class="row-time">09:13</span>
+                </div>
+                <div class="chat-row">
+                  <img src="./assets/figma/avatar-phone.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>+79892887733</strong>
+                    <small>До 5 тыс в сутки.</small>
+                  </div>
+                  <span class="row-time">3 мин</span>
+                </div>
+                <div class="chat-row">
+                  <img src="./assets/figma/avatar-dina.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>Dina Fadeeva</strong>
+                    <small>Спасибо огромное!</small>
+                  </div>
+                  <span class="row-time">5 мин</span>
+                </div>
+                <div class="chat-row">
+                  <img src="./assets/figma/avatar-steve.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>Steve Sanchez</strong>
+                    <small>This is awesome!</small>
+                  </div>
+                  <span class="row-time">5 мин</span>
+                </div>
+                <div class="chat-row">
+                  <img src="./assets/figma/avatar-green.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>Зеленый мяч</strong>
+                    <small>Отправил вам GIF</small>
+                  </div>
+                  <span class="row-time">09:15</span>
+                </div>
+                <div class="chat-row">
+                  <img src="./assets/figma/avatar-ulyana-spb.png" alt="" class="row-avatar" />
+                  <div class="row-text">
+                    <strong>Ульяна Б. (Санкт-Петербург)</strong>
+                    <small>🖐</small>
+                  </div>
+                  <span class="row-time">09:15</span>
                 </div>
               </div>
+
+              <div class="mockup-chat">
+                <div class="chat-head">
+                  <div class="chat-head-info">
+                    <strong>Ульяна Борунова</strong>
+                    <small>Веб-клиент</small>
+                  </div>
+                  <div class="chat-head-actions">
+                    <button class="btn-close-pill">Закрыть</button>
+                  </div>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                  <!-- Step 1: client message (hidden initially) -->
+                  <div class="anim-step anim-hidden" data-step="1">
+                    <div class="message-bubble client-bubble">Здравствуйте. Хочу заказать пионы 25 шт</div>
+                  </div>
+                  <!-- Step 2: typing indicator -->
+                  <div class="anim-step anim-hidden" data-step="2">
+                    <div class="message-row">
+                      <img src="./assets/figma/avatar-chat.png" alt="" class="msg-avatar" />
+                      <span class="typing-text">Печатает…</span>
+                    </div>
+                  </div>
+                  <!-- Step 5: operator response -->
+                  <div class="anim-step anim-hidden" data-step="5">
+                    <div class="message-bubble operator-bubble">Здравствуйте, Ульяна! Пионы в наличии — 25 шт по 350 ₽. Оформить доставку на сегодня?</div>
+                  </div>
+                </div>
+                <div class="composer-wrap">
+                  <div class="composer-box">
+                    <div class="composer-top"><span>Ответ ▾</span></div>
+                    <div class="composer-input" id="composer-input">|</div>
+                    <div class="composer-actions">
+                      <span class="composer-emoji" role="button" aria-label="Эмодзи">◉</span>
+                      <button class="btn-send">Отправить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="mockup-ai" id="mockup-ai">
+                <div class="ai-tabs">
+                  <div class="ai-tab active">
+                    <img src="./assets/figma/icon-ai-union.svg" alt="" class="ai-icon" />
+                    <span>AI-помощник</span>
+                  </div>
+                  <div class="ai-tab"><span>Детали</span></div>
+                  <div class="ai-tab-underline"></div>
+                </div>
+                <div class="ai-content" id="ai-content">
+                  <!-- Step 3: AI working state (hidden initially) -->
+                  <div class="anim-step anim-hidden" data-step="3">
+                    <div class="ai-working">
+                      <div class="ai-working-head">
+                        <img src="./assets/figma/icon-ai-union.svg" alt="" class="ai-working-icon" />
+                        <span>Готовлю ответ</span>
+                        <span class="ai-dots"><span></span><span></span><span></span></span>
+                      </div>
+                      <div class="ai-divider"></div>
+                    </div>
+                  </div>
+                  <!-- Step 4: AI response (hidden initially) -->
+                  <div class="anim-step anim-hidden" data-step="4">
+                    <div class="ai-response-box">
+                      <div class="ai-response-head">
+                        <img src="./assets/figma/icon-ai-union.svg" alt="" class="ai-working-icon" />
+                        <span>AI-помощник</span>
+                      </div>
+                      <div class="ai-divider"></div>
+                      <p class="ai-response-text">Здравствуйте, Ульяна! Пионы в наличии — 25 шт по 350 ₽. Оформить доставку на сегодня?</p>
+                      <button class="btn-insert">Вставить</button>
+                    </div>
+                  </div>
+                  <!-- Default: question box -->
+                  <div class="ai-question-box" id="ai-question-box">
+                    <p>Вопрос AI-помощнику</p>
+                    <button class="btn-send-round" aria-label="Отправить вопрос">↑</button>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
 
-          <button class="btn btn-dark hero-cta">Телетайп с AI</button>
-          <p class="hero-note">Мы всё настроим. Вы попробуете бесплатно,<br />без привязки карты.</p>
+          <div class="hero-footer">
+            <button class="btn btn-dark hero-cta">Телетайп с AI</button>
+            <p class="hero-note">Мы всё настроим. Вы попробуете бесплатно,<br />без привязки карты.</p>
+          </div>
         </div>
       </section>
 
-      <section class="products" id="products">
+      <div class="section-divider"></div>
+
+      <section class="products reveal" id="products">
         <div class="container">
           <h2>
             Телетайп — облачный диалог-центр.<br />
@@ -220,8 +347,10 @@
               <article class="product-card product-integrations">
                 <div class="integration-flow">
                   <div class="integration-new-dialog">
-                    <img src="./assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg" alt="" />
-                    <span>Новый диалог</span>
+                    <div class="integration-icon-wrap">
+                      <img src="./assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg" alt="" class="integration-cycle-icon" />
+                    </div>
+                    <span class="integration-cycle-text">Новый диалог</span>
                   </div>
                   <div class="integration-mark">
                     <span>T</span>
@@ -247,6 +376,7 @@
                   <div class="ai-helper-head">
                     <span class="ai-bot-icon"></span>
                     <strong>Готовлю ответ</strong>
+                    <span class="ai-dots"><span></span><span></span><span></span></span>
                   </div>
                   <div class="ai-helper-divider"></div>
                 </div>
@@ -268,10 +398,10 @@
         </div>
       </section>
 
-      <section class="cases" id="cases">
+      <section class="cases reveal" id="cases">
         <div class="container">
           <h2>Телетайп подходит командам<br />от стартапов до корпораций</h2>
-          <div class="case-tabs" data-case-tabs>
+          <div class="case-tabs" data-case-tabs role="tablist" aria-label="Фильтр по отраслям">
             <button class="active" data-filter="all">Все</button>
             <button data-filter="saas">SaaS</button>
             <button data-filter="retail">Ритейл</button>
@@ -336,10 +466,10 @@
         </div>
       </section>
 
-      <section class="prices" id="prices">
+      <section class="prices reveal" id="prices">
         <div class="container">
           <h2>Цена Телетайпа <span>зависит от набора функций и количества каналов</span></h2>
-          <div class="billing-tabs" data-billing-tabs>
+          <div class="billing-tabs" data-billing-tabs role="tablist" aria-label="Период оплаты">
             <button class="active" data-plan="month">Месяц</button>
             <button data-plan="quarter">3 месяца</button>
             <button data-plan="year">Год</button>
@@ -353,7 +483,7 @@
         </div>
       </section>
 
-      <section class="corporate" id="corporate">
+      <section class="corporate reveal" id="corporate">
         <div class="container">
           <div class="corp-shell">
             <img class="corp-grid-v" src="./assets/figma/8edb117f-8366-489c-b304-0a0a963f16a1.svg" alt="" />
@@ -390,7 +520,7 @@
       </section>
     </main>
 
-    <footer class="footer" id="footer">
+    <footer class="footer reveal" id="footer" role="contentinfo">
       <div class="container">
         <div class="footer-top">
           <img src="./assets/figma/fa12bc7a-3cf8-47c8-beb3-5cbc74bb3662.svg" alt="Teletype" />

@@ -21,75 +21,116 @@ dropdownWrappers.forEach((wrapper) => {
   }
 });
 
-// Integration label cycling
-const integrationSpan = document.querySelector('.integration-new-dialog span');
-if (integrationSpan) {
+// Integration label cycling with icons
+const integrationText = document.querySelector('.integration-cycle-text');
+const integrationIcon = document.querySelector('.integration-cycle-icon');
+if (integrationText && integrationIcon) {
   const labels = [
-    'Новый диалог',
-    'Лид с Авито',
-    'Заказ с сайта',
-    'SMS уведомление'
+    { text: 'Новый диалог', icon: './assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg', bg: '#3490ec' },
+    { text: 'Лид с Авито', icon: './assets/figma/icon-avito.svg', bg: '#fff' },
+    { text: 'Заказ с сайта', icon: './assets/figma/icon-web.svg', bg: 'transparent' },
+    { text: 'SMS от клиента', icon: './assets/figma/icon-sms.svg', bg: 'transparent' }
   ];
   let currentLabelIndex = 0;
+  const iconWrap = document.querySelector('.integration-icon-wrap');
 
   setInterval(() => {
     currentLabelIndex = (currentLabelIndex + 1) % labels.length;
-    integrationSpan.textContent = labels[currentLabelIndex];
+    const item = labels[currentLabelIndex];
 
-    // Fade out and in
-    integrationSpan.style.opacity = '0.3';
+    // Fade out
+    integrationText.style.opacity = '0';
+    integrationIcon.style.opacity = '0';
+
     setTimeout(() => {
-      integrationSpan.style.opacity = '1';
-    }, 250);
+      integrationText.textContent = item.text;
+      integrationIcon.src = item.icon;
+      if (iconWrap) iconWrap.style.background = item.bg;
+      // Fade in
+      integrationText.style.opacity = '1';
+      integrationIcon.style.opacity = '1';
+    }, 300);
   }, 2500);
 }
 
-// Hero chat animation sequence
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const chatMessages = document.querySelector('.chat-messages');
-    const typingIndicator = document.querySelector('.typing-indicator');
-    const composerWrap = document.querySelector('.composer-wrap');
+// Hero chat animation sequence (ANIM-01)
+function runHeroAnimation() {
+  const steps = document.querySelectorAll('.anim-step');
+  const composerInput = document.getElementById('composer-input');
+  const aiQuestionBox = document.getElementById('ai-question-box');
 
-    if (chatMessages) {
-      const bubbles = chatMessages.querySelectorAll('.message-bubble');
+  // Reset all steps
+  steps.forEach(s => {
+    s.classList.remove('anim-visible');
+    s.classList.add('anim-hidden');
+  });
+  if (composerInput) composerInput.textContent = '|';
+  if (aiQuestionBox) aiQuestionBox.style.display = '';
 
-      // Show first bubble with animation
-      if (bubbles[0]) {
-        bubbles[0].style.animation = 'fadeInUp 0.5s ease forwards';
-      }
-
-      // After first message, show typing indicator
-      setTimeout(() => {
-        if (typingIndicator) {
-          typingIndicator.style.animation = 'fadeInUp 0.5s ease forwards';
-        }
-
-        // After typing, show operator response
-        setTimeout(() => {
-          if (bubbles[1]) {
-            bubbles[1].style.animation = 'fadeInUp 0.5s ease forwards';
-          }
-
-          // After operator message, hide typing indicator and show composer suggestion
-          setTimeout(() => {
-            if (typingIndicator) {
-              typingIndicator.style.animation = 'fadeOutDown 0.3s ease forwards';
-              typingIndicator.style.display = 'none';
-            }
-
-            // Auto-fill composer with suggestion
-            const composerBox = composerWrap.querySelector('.composer-box span');
-            if (composerBox) {
-              composerBox.textContent = 'Спасибо за обращение! Если у вас есть ещё вопросы...';
-              composerBox.style.animation = 'fadeInUp 0.5s ease forwards';
-            }
-          }, 500);
-        }, 1500);
-      }, 800);
+  function showStep(step) {
+    const el = document.querySelector(`[data-step="${step}"]`);
+    if (el) {
+      el.classList.remove('anim-hidden');
+      el.classList.add('anim-visible');
     }
-  }, 800);
-});
+  }
+
+  function hideStep(step) {
+    const el = document.querySelector(`[data-step="${step}"]`);
+    if (el) {
+      el.classList.remove('anim-visible');
+      el.classList.add('anim-hidden');
+    }
+  }
+
+  // Timeline
+  const timeline = [
+    // Step 1: Client message appears (t=1s)
+    { delay: 1000, action: () => showStep(1) },
+    // Step 2: Typing indicator (t=2.5s)
+    { delay: 1500, action: () => showStep(2) },
+    // Step 3: AI "Готовлю ответ" working state (t=3.5s)
+    { delay: 1000, action: () => {
+      if (aiQuestionBox) aiQuestionBox.style.display = 'none';
+      showStep(3);
+    }},
+    // Step 4: AI response ready, hide working state (t=5.5s)
+    { delay: 2000, action: () => {
+      hideStep(3);
+      showStep(4);
+    }},
+    // Step 5: Hide typing, show operator response (t=7s)
+    { delay: 1500, action: () => {
+      hideStep(2);
+      showStep(5);
+      if (composerInput) {
+        composerInput.textContent = 'Здравствуйте, Ульяна! Пионы в наличии...';
+      }
+    }},
+    // Hold for 4s, then reset and loop (t=11s)
+    { delay: 4000, action: () => runHeroAnimation() }
+  ];
+
+  let totalDelay = 0;
+  timeline.forEach(({ delay, action }) => {
+    totalDelay += delay;
+    setTimeout(action, totalDelay);
+  });
+}
+
+// Start animation when mockup is in viewport
+const mockupFrame = document.querySelector('.mockup-frame');
+if (mockupFrame) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        runHeroAnimation();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(mockupFrame);
+}
 
 const caseTabs = document.querySelector("[data-case-tabs]");
 const caseGrid = document.querySelector("[data-case-grid]");
@@ -167,6 +208,41 @@ const featureData = [
     label: "Интеграция с AmoCRM",
     price: 0,
     active: true,
+    icon: "",
+  },
+  {
+    id: "sbercrm",
+    label: "Интеграция с SberCRM",
+    price: 0,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "bitrix24",
+    label: "Интеграция с Bitrix24",
+    price: 0,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "moysklad",
+    label: "Интеграция с МойСклад",
+    price: 0,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "restoplace",
+    label: "Интеграция с Restoplace",
+    price: 0,
+    active: false,
+    icon: "",
+  },
+  {
+    id: "roistat",
+    label: "Интеграция с Roistat",
+    price: 0,
+    active: false,
     icon: "",
   },
 ];
@@ -353,3 +429,14 @@ if (billingTabs) {
 }
 
 renderPricing();
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
