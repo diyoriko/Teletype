@@ -64,7 +64,7 @@ body {
 
 body {
   font-family: "Oceanic Grotesk", "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #efede2;
+  background: #fef9ea;
   color: var(--strict-dark);
 }
 
@@ -91,20 +91,18 @@ button {
   position: sticky;
   top: 0;
   z-index: 30;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background: linear-gradient(to bottom, rgba(239, 237, 226, 0.95), rgba(239, 237, 226, 0));
+  padding: 25px 50px;
+  background: linear-gradient(to bottom, rgba(254, 249, 234, 0.95), rgba(254, 249, 234, 0));
   backdrop-filter: blur(2px);
 }
 
 .nav-shell {
-  width: min(1512px, calc(100% - 40px));
+  width: 100%;
+  max-width: 1512px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
-  padding: 0 30px;
 }
 
 .nav-left-pill {
@@ -133,12 +131,12 @@ button {
 .menu a {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   padding: 8px 10px;
   border-radius: 10px;
   font-size: 20px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 500;
   transition: background 0.2s ease;
 }
 
@@ -203,7 +201,6 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-right: 30px;
 }
 
 .btn {
@@ -212,7 +209,7 @@ button {
   padding: 15px 30px;
   font-size: 20px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
@@ -249,14 +246,14 @@ button {
 }
 
 .hero {
-  padding: 100px 0 200px;
+  padding: 50px 0 0;
 }
 
 .hero-shell {
   width: min(1512px, 100%);
   margin: 0 auto;
   padding: 100px 50px 200px;
-  border-radius: 100px;
+  border-radius: 50px;
   background: linear-gradient(180deg, rgba(255, 251, 240, 0.5) 0%, rgba(0, 204, 55, 0.1) 25%, rgba(0, 204, 55, 0.5) 75%, #00cc37 100%);
   box-shadow: 0 0 200px rgba(31, 25, 20, 0.1);
   display: flex;
@@ -291,6 +288,7 @@ button {
   font-size: clamp(44px, 6vw, 80px);
   line-height: 1;
   letter-spacing: -0.02em;
+  font-weight: 500;
 }
 
 /* Mockup frame — outer glass wrapper */
@@ -905,7 +903,8 @@ button {
 }
 
 .products {
-  padding-bottom: 80px;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 .products h2,
@@ -915,7 +914,7 @@ button {
   text-align: center;
   font-size: 50px;
   line-height: 1.1;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .products h2 span,
@@ -954,7 +953,7 @@ button {
   margin: 0;
   font-size: 30px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
 }
 
@@ -1512,12 +1511,14 @@ img.ai-bot-icon {
   margin: 100px auto 0;
   display: block;
   font-size: 40px;
+  font-weight: 400;
   padding: 25px 40px;
   border-radius: 25px;
 }
 
 .cases {
-  padding-bottom: 0;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 .case-tabs {
@@ -1562,7 +1563,7 @@ img.ai-bot-icon {
   padding: 30px;
   display: grid;
   align-content: start;
-  gap: 20px;
+  gap: 30px;
 }
 
 .case-card:nth-child(4n) {
@@ -1578,9 +1579,10 @@ img.ai-bot-icon {
 
 .case-card h3 {
   margin: 0;
-  font-size: 44px;
-  line-height: 1.05;
-  font-weight: 800;
+  font-size: 29px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -1px;
 }
 
 .case-card p {
@@ -1603,7 +1605,8 @@ img.ai-bot-icon {
 }
 
 .prices {
-  padding-bottom: 0;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }
 
 .billing-tabs {
@@ -1626,7 +1629,7 @@ img.ai-bot-icon {
 .billing-tabs button.active {
   background: #fff;
   box-shadow: 0 1px 3px rgba(31, 25, 20, 0.2);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .pricing-layout {
@@ -1769,7 +1772,7 @@ img.ai-bot-icon {
   width: 200px;
   height: 50px;
   transform: translateX(-50%);
-  background: #efede2;
+  background: #fef9ea;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
 
@@ -1804,8 +1807,9 @@ img.ai-bot-icon {
   color: #fef9ea;
   font-size: 20px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 500;
   padding: 15px;
+  cursor: pointer;
 }
 
 .summary p {
@@ -1886,9 +1890,9 @@ img.ai-bot-icon {
 .corp-left h2 {
   margin: 0;
   color: #fef9ea;
-  font-size: 56px;
-  line-height: 1.1;
-  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
 .corp-left .btn {
@@ -1908,12 +1912,13 @@ img.ai-bot-icon {
   place-items: center;
   text-align: center;
   color: rgba(254, 249, 234, 0.5);
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1.1;
-  padding: 15px 25px;
+  padding: 20px 30px;
   border-radius: 15px;
   border: 1px solid rgba(87, 77, 68, 0.25);
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(12, 12, 12, 0.8), rgba(0, 0, 0, 0.8));
   box-shadow: 0px 3px 8px rgba(31, 25, 20, 0.12);
 }
 
@@ -2127,7 +2132,7 @@ img.ai-bot-icon {
 }
 
 .footer-contacts p:first-child {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .footer-legal {
@@ -2187,7 +2192,8 @@ img.ai-bot-icon {
   border-radius: var(--radius-pill);
   font-size: 20px;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .lang-toggle button.active {
@@ -2195,11 +2201,6 @@ img.ai-bot-icon {
   background: #ddd0b0;
 }
 
-.section-divider {
-  height: 4px;
-  background: var(--green, #00cc37);
-  width: 100%;
-}
 
 .reveal {
   opacity: 0;
