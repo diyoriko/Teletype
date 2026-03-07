@@ -264,14 +264,14 @@ button {
 }
 
 .hero {
-  padding: 50px 0 0;
+  padding: 100px 0 200px;
 }
 
 .hero-shell {
   width: min(1512px, 100%);
   margin: 0 auto;
   padding: 100px 50px 200px;
-  border-radius: 50px;
+  border-radius: 100px;
   background: linear-gradient(180deg, rgba(255, 251, 240, 0.5) 0%, rgba(0, 204, 55, 0.1) 25%, rgba(0, 204, 55, 0.5) 75%, #00cc37 100%);
   box-shadow: 0 0 200px rgba(31, 25, 20, 0.1);
   display: flex;
@@ -900,8 +900,9 @@ button {
 }
 
 .hero-cta {
-  padding: 25px 40px;
-  border-radius: 25px;
+  padding: 30px 50px;
+  border: 5px solid #1e1919;
+  border-radius: 30px;
   font-size: 40px;
   font-weight: 400;
 }
@@ -1559,12 +1560,12 @@ img.ai-bot-icon {
 .case-tabs button {
   border: 0;
   background: transparent;
-  border-radius: var(--radius-pill);
+  border-radius: 20px;
   padding: 15px 20px;
   font-size: 25px;
   line-height: 1;
   cursor: pointer;
-  transition: background 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out;
+  transition: background 0.2s ease-out, box-shadow 0.2s ease-out, border-radius 0.2s ease-out;
 }
 
 .case-tabs button:hover {
@@ -1573,7 +1574,9 @@ img.ai-bot-icon {
 
 .case-tabs button.active {
   background: #fff;
+  border-radius: var(--radius-pill);
   box-shadow: 0 1px 3px rgba(31, 25, 20, 0.2);
+  font-weight: 500;
 }
 
 .case-tabs button:focus-visible {
@@ -1659,9 +1662,9 @@ img.ai-bot-icon {
 .billing-tabs button {
   border: 0;
   padding: 15px 20px;
-  border-radius: var(--radius-pill);
+  border-radius: 20px;
   background: transparent;
-  font-size: 40px;
+  font-size: 25px;
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -1678,6 +1681,7 @@ img.ai-bot-icon {
 
 .billing-tabs button.active {
   background: #fff;
+  border-radius: var(--radius-pill);
   box-shadow: 0 1px 3px rgba(31, 25, 20, 0.2);
   font-weight: 500;
 }
@@ -1687,36 +1691,45 @@ img.ai-bot-icon {
   display: grid;
   grid-template-columns: 1fr 1fr 354px;
   gap: 20px;
-  min-height: 1261px;
+  min-height: 722px;
   align-items: stretch;
 }
 
 .pricing-column {
   background: #fff;
-  border-radius: var(--radius-l);
-  border: 1px solid var(--card-line);
-  padding: 25px;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 0 25px 30px;
   height: 100%;
 }
 
 .pricing-column h3,
 .summary h3 {
-  margin: 10px 0 15px;
+  margin: 0;
+  padding: 35px 0 15px;
   font-size: 30px;
   line-height: 1;
-  font-weight: 500;
+  font-weight: 400;
+  border-bottom: 1px solid var(--card-line);
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 2;
 }
 
 .price-row {
   border-radius: 20px;
   background: var(--strict-light);
-  border: 1px solid var(--panel-2);
+  border: 1px solid #efedea;
   padding: 15px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 15px;
-  margin: 10px 0;
+}
+
+.price-row + .price-row {
+  margin-top: 10px;
 }
 
 .row-title {
@@ -1740,6 +1753,7 @@ img.ai-bot-icon {
   cursor: pointer;
   position: relative;
   background: #efedea;
+  transition: background 0.2s ease;
 }
 
 .switch::after {
@@ -1768,7 +1782,7 @@ img.ai-bot-icon {
   color: #1e1919;
   font-size: 25px;
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .row-label span {
@@ -1796,6 +1810,21 @@ img.ai-bot-icon {
   line-height: 1;
   cursor: pointer;
   padding: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.stepper button:hover {
+  background: #574d44;
+  color: #fff;
+}
+
+.stepper button:active {
+  transform: scale(0.9);
+}
+
+.stepper button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 .stepper span {
@@ -1806,9 +1835,8 @@ img.ai-bot-icon {
 
 .summary {
   background: #fff;
-  border-radius: var(--radius-l);
-  border: 1px solid var(--card-line);
-  padding: 25px;
+  border-radius: 25px;
+  padding: 0 25px 15px;
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -1831,7 +1859,7 @@ img.ai-bot-icon {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 20px;
 }
 
 .summary li {
@@ -1851,15 +1879,31 @@ img.ai-bot-icon {
 .total-btn {
   width: 100%;
   margin-top: 20px;
-  border: 0;
+  border: 1px solid #1e1919;
   border-radius: 15px;
   background: #1e1919;
   color: #fef9ea;
   font-size: 20px;
   line-height: 1.2;
   font-weight: 500;
-  padding: 15px;
+  padding: 15px 30px;
   cursor: pointer;
+  transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.total-btn:hover {
+  background: #333;
+  box-shadow: 0 4px 12px rgba(30, 25, 25, 0.25);
+}
+
+.total-btn:active {
+  transform: scale(0.98);
+  transition-duration: 50ms;
+}
+
+.total-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 .summary p {
@@ -2104,7 +2148,7 @@ img.ai-bot-icon {
 }
 
 .footer {
-  padding: 200px 0 145px;
+  padding: 200px 50px 100px;
   background: linear-gradient(180deg, #fef9ea 0%, #ddccb0 100%);
 }
 
@@ -2218,6 +2262,10 @@ img.ai-bot-icon {
   color: #fef9ea;
   border-radius: 10px;
   padding: 8px 10px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 25px;
   line-height: 1.1;
 }
@@ -2255,6 +2303,7 @@ img.ai-bot-icon {
   background: #1e1919;
   border-radius: var(--radius-pill);
   padding: 3px;
+  height: 46px;
 }
 
 .lang-toggle button {
@@ -2268,9 +2317,6 @@ img.ai-bot-icon {
   line-height: 1.2;
   font-weight: 500;
   cursor: pointer;
-}
-
-.lang-toggle button {
   transition: background 0.2s ease, color 0.2s ease;
 }
 
