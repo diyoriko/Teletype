@@ -83,6 +83,20 @@ a {
 
 button {
   font: inherit;
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 .container {
@@ -911,6 +925,11 @@ button {
   box-shadow: 0 8px 24px rgba(30, 25, 25, 0.3);
 }
 
+.hero-cta:active {
+  transform: scale(0.97);
+  transition-duration: 50ms;
+}
+
 .hero-note {
   margin: 0;
   text-align: center;
@@ -1543,6 +1562,11 @@ img.ai-bot-icon {
   box-shadow: 0 8px 24px rgba(30, 25, 25, 0.25);
 }
 
+.section-cta:active {
+  transform: scale(0.98);
+  transition-duration: 50ms;
+}
+
 .cases {
   padding-top: 200px;
   padding-bottom: 200px;
@@ -1577,6 +1601,11 @@ img.ai-bot-icon {
   border-radius: var(--radius-pill);
   box-shadow: 0 1px 3px rgba(31, 25, 20, 0.2);
   font-weight: 500;
+}
+
+.case-tabs button:active {
+  transform: scale(0.97);
+  transition-duration: 50ms;
 }
 
 .case-tabs button:focus-visible {
@@ -1674,6 +1703,11 @@ img.ai-bot-icon {
   background: rgba(255, 255, 255, 0.6);
 }
 
+.billing-tabs button:active {
+  transform: scale(0.97);
+  transition-duration: 50ms;
+}
+
 .billing-tabs button:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
@@ -1767,6 +1801,10 @@ img.ai-bot-icon {
   top: 2px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.switch:active::after {
+  width: 30px;
 }
 
 .switch.on {
