@@ -967,129 +967,29 @@ button {
   position: relative;
   height: 278px;
   margin-top: 18px;
-}
-
-.mailing-spiral {
-  position: absolute;
-  left: -24px;
-  bottom: 46px;
-  width: 98px;
-  height: 98px;
-  border-radius: 50%;
-  border: 2px solid rgba(87, 77, 68, 0.14);
-  clip-path: inset(0 42% 0 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mailing-envelope {
   position: absolute;
-  left: 46px;
-  bottom: 0;
-  width: 302px;
-  height: 204px;
-  border-radius: 16px;
-  background: #fffcf7;
-  box-shadow: 0 3px 4px rgba(31, 25, 20, 0.15);
-}
-
-.mailing-envelope-back {
-  transform: rotate(-15deg);
-  opacity: 0.96;
-}
-
-.mailing-envelope-front {
-  transform: rotate(10deg);
-}
-
-.mailing-envelope-front::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(150deg, transparent 0 49.5%, rgba(87, 77, 68, 0.14) 50%, transparent 50.5%),
-    linear-gradient(32deg, transparent 0 49.5%, rgba(87, 77, 68, 0.14) 50%, transparent 50.5%);
-}
-
-.mailing-seal {
-  position: absolute;
-  right: 32px;
-  top: 22px;
-  width: 42px;
-  height: 42px;
+  width: 361px;
+  height: 191px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
-  background: #2e3f69;
-  box-shadow: inset 0 0 0 2px rgba(255, 251, 240, 0.16);
+  overflow: hidden;
 }
 
-.mailing-badge {
-  position: absolute;
-  left: 52px;
-  top: 72px;
-  z-index: 2;
-  width: 138px;
-  transform: rotate(-12deg);
-}
-
-.mailing-badge img {
+.mailing-envelope img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.mailing-swoosh {
-  position: absolute;
-  left: -22px;
-  bottom: -32px;
-  width: 224px;
-  height: 182px;
-  border-radius: 50% 50% 0 0;
-  background: #e7db62;
-  transform: rotate(-10deg);
-}
-
-.mailing-swoosh::after {
-  content: "";
-  position: absolute;
-  left: 92px;
-  top: 18px;
-  width: 58px;
-  height: 142px;
-  border-radius: 50%;
-  background: rgba(255, 251, 240, 0.82);
-  transform: rotate(16deg);
-}
-
-.mailing-lines {
-  position: absolute;
-  bottom: 26px;
-  height: 44px;
-  width: 110px;
-  opacity: 0.78;
-}
-
-.mailing-lines::before,
-.mailing-lines::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  border-top: 2px solid rgba(30, 25, 25, 0.42);
-}
-
-.mailing-lines::before {
-  top: 12px;
-}
-
-.mailing-lines::after {
-  top: 26px;
-}
-
-.mailing-lines-left {
-  left: 32px;
-  transform: rotate(-8deg);
-}
-
-.mailing-lines-right {
-  right: 28px;
-  transform: rotate(-6deg);
-}
+.env-back  { transform: rotate(-28deg); left: -63px; top: 80px; opacity: 0.9; }
+.env-mid   { transform: rotate(-24deg); left: -54px; top: 97px; opacity: 0.95; }
+.env-front { transform: rotate(-18deg); left: -35px; top: 118px; }
 
 .product-service {
   height: 200px;
@@ -1119,8 +1019,7 @@ button {
   height: 50px;
   border-radius: 999px;
   background: #1e1919;
-  color: #ddd0b0;
-  font-size: 26px;
+  overflow: hidden;
   font-weight: 800;
 }
 
@@ -1192,54 +1091,77 @@ button {
 }
 
 .dialog-center-shell {
-  margin-top: 20px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 0 20px 20px;
   gap: 20px;
 }
 
 .dialog-center-list {
-  display: grid;
-  gap: 5px;
-}
-
-.dialog-line {
-  height: 44px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #f7f6f5 0%, #efedea 50%, #f7f6f5 100%);
-}
-
-.dialog-line.long {
-  width: 210px;
-}
-
-.dialog-line.mid {
-  width: 185px;
-}
-
-.dialog-line.short {
-  width: 154px;
-}
-
-.dialog-center-devices {
   display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 32px;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  flex: 1;
 }
 
-.dialog-center-devices span:first-child {
-  width: 22px;
-  height: 26px;
-  border-radius: 4px;
-  border: 2px solid rgba(87, 77, 68, 0.75);
+.dialog-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: #f7f6f5;
+  border-radius: 10px;
+  padding: 6px 8px;
 }
 
-.dialog-center-devices span:last-child {
-  width: 14px;
-  height: 22px;
-  margin-top: 4px;
-  border-radius: 4px;
-  border: 2px solid rgba(87, 77, 68, 0.75);
+.dialog-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dialog-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dialog-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.bar {
+  height: 15px;
+  border-radius: 5px;
+  background: #efedea;
+}
+
+.bar.w100 { width: 100px; }
+.bar.w90 { width: 90px; }
+.bar.w85 { width: 85px; }
+.bar.w80 { width: 80px; }
+.bar.w70 { width: 70px; }
+.bar.w60 { width: 60px; }
+.bar.w50 { width: 50px; }
+
+.bar-time {
+  width: 20px;
+  height: 8px;
+  border-radius: 100px;
+  background: #efedea;
+  flex-shrink: 0;
+}
+
+.dialog-devices {
+  width: 67px;
+  height: 40px;
 }
 
 .product-channels {
@@ -1250,10 +1172,18 @@ button {
 .channels-board {
   position: relative;
   margin-top: 10px;
-  height: 320px;
+  height: 340px;
+  overflow: hidden;
+}
+
+.channels-grid-bg {
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(rgba(199, 193, 187, 0.32) 1px, transparent 1px) 0 0 / 33.333% 33.333%,
-    linear-gradient(90deg, rgba(199, 193, 187, 0.32) 1px, transparent 1px) 0 0 / 33.333% 33.333%;
+    url('./assets/figma/grid-h.png') center / 100% 100%,
+    url('./assets/figma/grid-v.png') center / 100% 100%;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
 }
 
 .channel-tile {
@@ -1261,47 +1191,12 @@ button {
   display: grid;
   place-items: center;
   width: 65px;
-  height: 65px;
+  height: 68px;
   border-radius: 10px;
   box-shadow: 0 3px 4px rgba(31, 25, 20, 0.15);
-  animation: float 3s ease-in-out infinite;
+  overflow: hidden;
 }
 
-.channel-tile.tg {
-  animation-delay: 0s;
-}
-
-.channel-tile.fb {
-  animation-delay: 0.3s;
-}
-
-.channel-tile.wa {
-  animation-delay: 0.6s;
-}
-
-.channel-tile.avito {
-  animation-delay: 0.9s;
-}
-
-.channel-tile.ig {
-  animation-delay: 1.2s;
-}
-
-.channel-tile.vk {
-  animation-delay: 1.5s;
-}
-
-.channel-tile.mail {
-  animation-delay: 1.8s;
-}
-
-.channel-tile.max {
-  animation-delay: 0.2s;
-}
-
-.channel-tile.chat {
-  animation-delay: 0.5s;
-}
 
 @keyframes float {
   0%, 100% {
@@ -1313,132 +1208,36 @@ button {
 }
 
 .channel-tile img {
-  width: 44px;
-  height: 44px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .channel-tile.tg {
-  left: 14px;
-  top: 84px;
+  left: 34px;
+  top: 60px;
   background: #3490ec;
 }
 
 .channel-tile.fb {
-  left: 146px;
-  top: 84px;
+  left: 166px;
+  top: 60px;
   background: #0967ff;
 }
 
 .channel-tile.wa {
-  left: 212px;
-  top: 84px;
+  left: 232px;
+  top: 60px;
   background: linear-gradient(44deg, #19c534 0%, #57f371 100%);
 }
 
-.channel-tile.avito {
-  left: 80px;
-  top: 153px;
-  background: #fff;
-}
-
-.channel-tile.avito span {
-  position: absolute;
-  border-radius: 999px;
-}
-
-.channel-tile.avito span:nth-child(1) {
-  left: 17px;
-  top: 26px;
-  width: 26px;
-  height: 26px;
-  background: #16d546;
-}
-
-.channel-tile.avito span:nth-child(2) {
-  left: 34px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  background: #1f8fff;
-}
-
-.channel-tile.avito span:nth-child(3) {
-  left: 34px;
-  top: 39px;
-  width: 18px;
-  height: 18px;
-  background: #ff5a67;
-}
-
-.channel-tile.avito span:nth-child(4) {
-  left: 21px;
-  top: 14px;
-  width: 12px;
-  height: 12px;
-  background: #8c5bff;
-}
-
-.channel-tile.ig {
-  left: 212px;
-  top: 153px;
-  background: #fff;
-}
-
-.channel-tile.ig span {
-  position: relative;
-  width: 39px;
-  height: 39px;
-  border-radius: 12px;
-  border: 4px solid transparent;
-  background:
-    linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(135deg, #f4c14d 0%, #f0447b 45%, #7b3df7 100%) border-box;
-}
-
-.channel-tile.ig span::before,
-.channel-tile.ig span::after {
-  content: "";
-  position: absolute;
-}
-
-.channel-tile.ig span::before {
-  inset: 8px;
-  border-radius: 999px;
-  border: 3px solid #f0447b;
-}
-
-.channel-tile.ig span::after {
-  right: 6px;
-  top: 6px;
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: #f4c14d;
-}
-
-.channel-tile.vk {
-  left: 14px;
-  top: 223px;
-  background: #0967ff;
-}
-
-.channel-tile.mail {
-  left: 146px;
-  top: 223px;
-  background: #1da3ff;
-}
-
-.channel-tile.max {
-  left: 80px;
-  top: 292px;
-  background: linear-gradient(135deg, #3cc1ff 0%, #8d3cff 100%);
-}
-
-.channel-tile.chat {
-  left: 212px;
-  top: 292px;
-  background: linear-gradient(180deg, #57f371 0%, #21cf46 100%);
-}
+.channel-tile.ig    { left: 232px; top: 129px; background: #fff; padding: 10px; }
+.channel-tile.avito { left: 100px; top: 129px; background: #fff; padding: 10px; }
+.channel-tile.vk    { left: 34px;  top: 199px; }
+.channel-tile.mail  { left: 166px; top: 199px; }
+.channel-tile.sms   { left: 232px; top: 268px; }
+.channel-tile.max   { left: 100px; top: 268px; }
+.channel-tile.viber { left: 232px; top: 337px; background: #7f6bf4; padding: 10px; }
 
 .product-ai-helper {
   height: 351px;
@@ -1459,65 +1258,29 @@ button {
   height: 243px;
   margin: 14px auto 0;
   padding: 20px 20px 28px;
-  border: 0.5px solid rgba(87, 77, 68, 0.28);
-  border-radius: 22px;
-  background: #f7f1e4;
 }
 
-.ai-helper-bubble::after {
-  content: "";
+.ai-helper-bg {
   position: absolute;
-  right: 28px;
-  bottom: -17px;
-  width: 34px;
-  height: 34px;
-  background: #f7f1e4;
-  border-right: 0.5px solid rgba(87, 77, 68, 0.28);
-  border-bottom: 0.5px solid rgba(87, 77, 68, 0.28);
-  transform: skewX(35deg);
-  border-bottom-right-radius: 8px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .ai-helper-head {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   color: #574d44;
   font-size: 20px;
   line-height: 1.2;
+  padding: 20px;
 }
 
-.ai-bot-icon {
-  display: inline-block;
-  width: 20px;
-  height: 16px;
-  border-radius: 5px;
-  border: 2px solid #00cc37;
-  position: relative;
-}
-
-.ai-bot-icon::before,
-.ai-bot-icon::after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  width: 3px;
-  height: 3px;
-  border-radius: 999px;
-  background: #00cc37;
-}
-
-.ai-bot-icon::before {
-  left: 4px;
-}
-
-.ai-bot-icon::after {
-  right: 4px;
-}
-
-.ai-helper-divider {
-  margin-top: 12px;
-  border-top: 1px solid rgba(87, 77, 68, 0.2);
+img.ai-bot-icon {
+  width: 24px;
+  height: 20px;
 }
 
 .product-brand {
@@ -1624,11 +1387,9 @@ button {
   background: #f7f6f5;
 }
 
-.integration-mark span {
-  color: #1e1919;
-  font-size: 62px;
-  line-height: 1;
-  font-weight: 800;
+.integration-mark img {
+  width: 68px;
+  height: 80px;
 }
 
 .integration-connector {
@@ -1718,18 +1479,33 @@ button {
   display: grid;
   justify-items: center;
   align-content: center;
-  gap: 8px;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
-.robot {
-  font-size: 70px;
-  line-height: 1;
+.product-ai-big::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: url('./assets/figma/ai-bg.png') center / contain no-repeat;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.ai-big-icon {
+  width: 100px;
+  height: 92px;
+  position: relative;
+  z-index: 1;
 }
 
 .product-ai-big h3 {
   font-size: 50px;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 0.8;
+  letter-spacing: -2px;
+  position: relative;
+  z-index: 1;
 }
 
 .section-cta {
