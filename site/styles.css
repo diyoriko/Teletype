@@ -63,7 +63,7 @@ body {
 }
 
 body {
-  font-family: "Oceanic Grotesk", "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Oceanic Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: #fef9ea;
   color: var(--strict-dark);
   -webkit-font-smoothing: antialiased;
@@ -1084,7 +1084,7 @@ a {
   color: #00ae59;
   font-size: 12px;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .service-copy p {
@@ -1653,7 +1653,7 @@ img.ai-bot-icon {
   margin: 0;
   font-size: 29px;
   line-height: 1.2;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
