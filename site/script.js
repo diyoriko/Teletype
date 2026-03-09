@@ -1,17 +1,42 @@
-// Dropdown functionality for mobile (touch support)
+/* ── Constants ───────────────────────────────────────────── */
+
+// THRESHOLDS
+const MOBILE_BREAKPOINT = 900;
+const MOCKUP_VISIBLE_THRESHOLD = 0.3;
+const REVEAL_VISIBLE_THRESHOLD = 0.15;
+const MIN_STEPPER_QTY = 1;
+
+// TIMING (ms)
+const INTEGRATION_CYCLE_INTERVAL = 2500;
+const INTEGRATION_FADE_DURATION = 300;
+const HERO_DELAY_CLIENT_MSG = 1000;
+const HERO_DELAY_TYPING = 1500;
+const HERO_DELAY_AI_WORKING = 1000;
+const HERO_DELAY_AI_RESPONSE = 2000;
+const HERO_DELAY_OPERATOR_REPLY = 1500;
+const HERO_DELAY_HOLD = 4000;
+
+// ANIMATION
+const CASE_CARD_ANIMATION = "staggerIn 0.3s ease-out both";
+
+// SIZES (px, used as CSS inline values)
+const DROPDOWN_OFFSET_Y = '8px';
+
+/* ── Dropdown (mobile touch) ────────────────────────────── */
+
 const dropdownWrappers = document.querySelectorAll('.dropdown-wrapper');
 dropdownWrappers.forEach((wrapper) => {
   const link = wrapper.querySelector('a');
   const dropdown = wrapper.querySelector('.dropdown');
 
-  if (window.innerWidth <= 900) {
+  if (window.innerWidth <= MOBILE_BREAKPOINT) {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const isOpen = dropdown.style.opacity === '1';
       if (isOpen) {
         dropdown.style.opacity = '0';
         dropdown.style.pointerEvents = 'none';
-        dropdown.style.transform = 'translateY(8px)';
+        dropdown.style.transform = `translateY(${DROPDOWN_OFFSET_Y})`;
       } else {
         dropdown.style.opacity = '1';
         dropdown.style.pointerEvents = 'auto';
@@ -21,7 +46,8 @@ dropdownWrappers.forEach((wrapper) => {
   }
 });
 
-// Integration label cycling with icons
+/* ── Integration label cycling ──────────────────────────── */
+
 const integrationText = document.querySelector('.integration-cycle-text');
 const integrationIcon = document.querySelector('.integration-cycle-icon');
 if (integrationText && integrationIcon) {
@@ -49,11 +75,12 @@ if (integrationText && integrationIcon) {
       // Fade in
       integrationText.style.opacity = '1';
       integrationIcon.style.opacity = '1';
-    }, 300);
-  }, 2500);
+    }, INTEGRATION_FADE_DURATION);
+  }, INTEGRATION_CYCLE_INTERVAL);
 }
 
-// Hero chat animation sequence (ANIM-01)
+/* ── Hero chat animation (ANIM-01) ─────────────────────── */
+
 function runHeroAnimation() {
   const steps = document.querySelectorAll('.anim-step');
   const composerInput = document.getElementById('composer-input');
@@ -86,21 +113,21 @@ function runHeroAnimation() {
   // Timeline
   const timeline = [
     // Step 1: Client message appears (t=1s)
-    { delay: 1000, action: () => showStep(1) },
+    { delay: HERO_DELAY_CLIENT_MSG, action: () => showStep(1) },
     // Step 2: Typing indicator (t=2.5s)
-    { delay: 1500, action: () => showStep(2) },
+    { delay: HERO_DELAY_TYPING, action: () => showStep(2) },
     // Step 3: AI "Готовлю ответ" working state (t=3.5s)
-    { delay: 1000, action: () => {
+    { delay: HERO_DELAY_AI_WORKING, action: () => {
       if (aiQuestionBox) aiQuestionBox.style.display = 'none';
       showStep(3);
     }},
     // Step 4: AI response ready, hide working state (t=5.5s)
-    { delay: 2000, action: () => {
+    { delay: HERO_DELAY_AI_RESPONSE, action: () => {
       hideStep(3);
       showStep(4);
     }},
     // Step 5: Hide typing, show operator response (t=7s)
-    { delay: 1500, action: () => {
+    { delay: HERO_DELAY_OPERATOR_REPLY, action: () => {
       hideStep(2);
       showStep(5);
       if (composerInput) {
@@ -108,7 +135,7 @@ function runHeroAnimation() {
       }
     }},
     // Hold for 4s, then reset and loop (t=11s)
-    { delay: 4000, action: () => runHeroAnimation() }
+    { delay: HERO_DELAY_HOLD, action: () => runHeroAnimation() }
   ];
 
   let totalDelay = 0;
@@ -128,9 +155,11 @@ if (mockupFrame) {
         observer.disconnect();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: MOCKUP_VISIBLE_THRESHOLD });
   observer.observe(mockupFrame);
 }
+
+/* ── Case filter tabs ───────────────────────────────────── */
 
 const caseTabs = document.querySelector("[data-case-tabs]");
 const caseGrid = document.querySelector("[data-case-grid]");
@@ -150,7 +179,7 @@ if (caseTabs && caseGrid) {
       const visible = filter === "all" || tags.includes(filter);
       if (visible) {
         card.style.display = "grid";
-        card.style.animation = "staggerIn 0.3s ease-out both";
+        card.style.animation = CASE_CARD_ANIMATION;
       } else {
         card.style.display = "none";
         card.style.animation = "";
@@ -158,6 +187,8 @@ if (caseTabs && caseGrid) {
     });
   });
 }
+
+/* ── Pricing calculator ─────────────────────────────────── */
 
 const billingMultipliers = {
   month: 1,
@@ -364,7 +395,7 @@ function buildRow(item) {
     minus.type = "button";
     minus.textContent = "−";
     minus.addEventListener("click", () => {
-      item.qty = Math.max(1, (item.qty || 1) - 1);
+      item.qty = Math.max(MIN_STEPPER_QTY, (item.qty || 1) - 1);
       renderPricing();
     });
 
@@ -437,6 +468,8 @@ if (billingTabs) {
 
 renderPricing();
 
+/* ── Scroll reveal ──────────────────────────────────────── */
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -444,6 +477,6 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: REVEAL_VISIBLE_THRESHOLD });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));

@@ -41,11 +41,32 @@
   --green: #00cc37;
   --panel: #f7f6f5;
   --panel-2: #efedea;
+  --border-warm: rgba(87, 77, 68, 0.25);
+  --border-warm-hover: rgba(87, 77, 68, 0.28);
+  --text-muted-50: rgba(31, 25, 20, 0.5);
+  --bg-light-75: rgba(255, 251, 240, 0.75);
+  --shadow-warm: rgba(31, 25, 20, 0.15);
+  --shadow-dark-25: rgba(30, 25, 25, 0.25);
+  --shadow-warm-20: rgba(31, 25, 20, 0.2);
+  --bg-white-60: rgba(255, 255, 255, 0.6);
+  --shadow-black-15: rgba(0, 0, 0, 0.15);
   --radius-pill: 100px;
+  --radius-2xl: 50px;
   --radius-xl: 40px;
+  --radius-lg: 30px;
   --radius-l: 25px;
   --radius-m: 20px;
   --radius-s: 15px;
+  --radius-sm: 12px;
+  --radius-xs: 10px;
+  --radius-2xs: 8px;
+
+  --shadow-2xs: 0 1px 3px var(--shadow-warm-20);
+  --shadow-xs: 0 3px 4px var(--shadow-warm);
+  --shadow-sm: 0 4px 12px var(--shadow-dark-25);
+  --shadow-md: 0 8px 24px var(--shadow-dark-25);
+  --shadow-lg: 0 10px 40px var(--shadow-warm);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -124,9 +145,9 @@ button {
   align-items: center;
   gap: 50px;
   padding: 12px 30px;
-  border: 1px solid rgba(87, 77, 68, 0.25);
+  border: 1px solid var(--border-warm);
   border-radius: var(--radius-pill);
-  background: rgba(255, 251, 240, 0.75);
+  background: var(--bg-light-75);
   min-height: 74px;
 }
 
@@ -147,7 +168,7 @@ button {
   align-items: center;
   gap: 5px;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   font-size: 20px;
   line-height: 1.2;
   font-weight: 500;
@@ -180,11 +201,11 @@ button {
   left: 0;
   margin-top: 8px;
   background: #fef9ea;
-  border: 1px solid rgba(87, 77, 68, 0.25);
-  border-radius: 20px;
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-m);
   padding: 12px;
   min-width: 240px;
-  box-shadow: 0 10px 40px rgba(31, 25, 20, 0.15);
+  box-shadow: var(--shadow-lg);
   opacity: 0;
   pointer-events: none;
   transform: translateY(4px);
@@ -197,7 +218,7 @@ button {
 .dropdown a {
   display: block;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   font-size: 16px;
   line-height: 1.2;
   font-weight: 500;
@@ -255,13 +276,13 @@ button {
 
 .btn-dark:hover {
   background: #000;
-  box-shadow: 0 4px 12px rgba(30, 25, 25, 0.25);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-ghost {
-  background: rgba(255, 251, 240, 0.75);
+  background: var(--bg-light-75);
   color: #000;
-  border-color: rgba(87, 77, 68, 0.25);
+  border-color: var(--border-warm);
 }
 
 .btn-ghost:hover {
@@ -288,7 +309,7 @@ button {
   width: min(1512px, 100%);
   margin: 0 auto;
   padding: 100px 50px 200px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: linear-gradient(180deg, rgba(255, 251, 240, 0.5) 0%, rgba(0, 204, 55, 0.1) 25%, rgba(0, 204, 55, 0.5) 75%, #00cc37 100%);
   box-shadow: 0 0 200px rgba(31, 25, 20, 0.1);
   display: flex;
@@ -331,16 +352,16 @@ button {
   width: 100%;
   max-width: 1282px;
   padding: 25px;
-  border-radius: 50px;
-  background: rgba(255, 251, 240, 0.75);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-2xl);
+  background: var(--bg-light-75);
+  box-shadow: var(--shadow-xl);
 }
 
 .mockup {
   width: 100%;
   border-radius: var(--radius-l);
-  border: 0.5px solid rgba(87, 77, 68, 0.25);
-  background: rgba(255, 251, 240, 0.75);
+  border: 0.5px solid var(--border-warm);
+  background: var(--bg-light-75);
   overflow: hidden;
   display: grid;
   grid-template-columns: 250px 220px 450px 1fr;
@@ -351,21 +372,21 @@ button {
 .mockup-list,
 .mockup-chat,
 .mockup-ai {
-  border-right: 0.5px solid rgba(87, 77, 68, 0.25);
+  border-right: 0.5px solid var(--border-warm);
   display: flex;
   flex-direction: column;
 }
 
 .mockup-sidebar {
-  padding: 15px 10px;
+  padding: 0;
 }
 
 .mockup-list {
-  padding: 15px 10px;
+  padding: 0;
 }
 
 .mockup-chat {
-  border-right: 0.5px solid rgba(87, 77, 68, 0.25);
+  border-right: 0.5px solid var(--border-warm);
 }
 
 .mockup-ai {
@@ -377,7 +398,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 5px 10px;
+  padding: 15px 15px 10px;
 }
 
 .mockup-head h3 {
@@ -407,7 +428,7 @@ button {
 .mockup-sidebar ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 
 .mockup-sidebar li {
@@ -418,32 +439,35 @@ button {
   font-size: 16px;
   line-height: 1.2;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
 }
 
 .mockup-sidebar li.active {
   background: #fff;
-  border: 0.5px solid rgba(87, 77, 68, 0.25);
+  border: 0.5px solid var(--border-warm);
+}
+
+.mockup-sidebar li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .mockup-sidebar li b {
-  color: rgba(30, 25, 25, 0.65);
+  color: var(--text-muted-50);
   font-weight: 400;
+  text-align: right;
 }
 
 .channels-mini {
-  margin-top: 6px;
-  padding-top: 2px;
-}
-
-.channels-mini li b {
-  color: rgba(30, 25, 25, 0.5);
-  font-weight: 400;
+  margin-top: 0;
 }
 
 /* Agents */
 .agents-mini {
-  margin-top: 8px;
+  margin-top: 0;
+  padding: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -467,23 +491,31 @@ button {
 .settings-mini {
   margin-top: auto;
   display: grid;
-  gap: 4px;
-  padding: 8px 10px 0;
+  gap: 0;
+  padding: 8.427px 16.854px 16.854px;
 }
 
 .settings-mini span {
   font-size: 16px;
   line-height: 1.2;
   padding: 8px 10px;
-  color: rgba(30, 25, 25, 0.8);
+  color: var(--strict-dark);
 }
 
 /* Dialogue list */
 .list-head {
   font-size: 16px;
   line-height: 1.2;
-  padding: 5px 5px 10px;
+  height: 50px;
+  padding: 15px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.mockup-list .chat-row,
+.mockup-list .chat-row.active {
+  margin: 0 10px;
 }
 
 .chat-row {
@@ -491,12 +523,13 @@ button {
   align-items: center;
   gap: 10px;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: 12.231px;
 }
 
 .chat-row.active {
   background: #fff;
-  border: 0.5px solid rgba(87, 77, 68, 0.25);
+  border: 0.5px solid var(--border-warm);
+  border-radius: var(--radius-xs);
 }
 
 .row-avatar {
@@ -516,7 +549,7 @@ button {
 
 .row-text strong {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -526,7 +559,7 @@ button {
 .row-text small {
   font-size: 14px;
   line-height: 1.2;
-  color: rgba(31, 25, 20, 0.5);
+  color: var(--text-muted-50);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -542,7 +575,7 @@ button {
 
 .row-time {
   font-size: 10px;
-  color: rgba(31, 25, 20, 0.5);
+  color: var(--text-muted-50);
   white-space: nowrap;
   flex-shrink: 0;
   align-self: flex-start;
@@ -552,12 +585,12 @@ button {
 /* Chat composer area */
 .chat-head {
   height: 50px;
-  border-bottom: 0.5px solid rgba(87, 77, 68, 0.25);
+  border-bottom: 0.5px solid var(--border-warm);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 12px 16px;
+  gap: 8.427px;
+  padding: 12.64px 16.854px;
 }
 
 .chat-head-info {
@@ -574,7 +607,7 @@ button {
 .chat-head-info small {
   font-size: 14px;
   line-height: 1.2;
-  color: rgba(31, 25, 20, 0.5);
+  color: var(--text-muted-50);
 }
 
 .chat-head-actions {
@@ -584,12 +617,12 @@ button {
 }
 
 .btn-close-pill {
-  border: 0.84px solid #1e1919;
-  border-radius: 100px;
+  border: 1px solid #1e1919;
+  border-radius: var(--radius-pill);
   background: transparent;
   font-size: 16px;
   line-height: 1;
-  padding: 6px 12px;
+  padding: 5.899px 12.64px;
   cursor: pointer;
 }
 
@@ -608,8 +641,8 @@ button {
 }
 
 .msg-avatar {
-  width: 25px;
-  height: 25px;
+  width: 25.28px;
+  height: 25.28px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -627,8 +660,8 @@ button {
 }
 
 .composer-box {
-  border: 0.5px solid #574d44;
-  border-radius: 10px;
+  border: 0.5px solid var(--border-warm);
+  border-radius: var(--radius-xs);
   background: #fff;
   padding: 15px;
   display: flex;
@@ -660,7 +693,7 @@ button {
 
 .btn-send {
   border: 0;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: #1e1919;
   color: #fef9ea;
   height: 30px;
@@ -678,7 +711,7 @@ button {
 
 .ai-tabs {
   height: 50px;
-  border-bottom: 0.5px solid rgba(87, 77, 68, 0.25);
+  border-bottom: 0.5px solid var(--border-warm);
   display: flex;
   align-items: center;
   gap: 20px;
@@ -711,7 +744,7 @@ button {
   left: 10px;
   width: 132px;
   height: 3px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: #10f;
 }
 
@@ -724,8 +757,8 @@ button {
 }
 
 .ai-question-box {
-  border: 0.5px solid #574d44;
-  border-radius: 10px;
+  border: 0.5px solid var(--border-warm);
+  border-radius: var(--radius-xs);
   background: #fff;
   padding: 15px;
   display: flex;
@@ -745,7 +778,7 @@ button {
   height: 30px;
   margin-left: auto;
   border: 0;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: #1e1919;
   color: #fef9ea;
   font-size: 16px;
@@ -805,7 +838,7 @@ button {
 /* Chat message bubbles for animation */
 .message-bubble {
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   font-size: 16px;
   line-height: 1.4;
   max-width: 85%;
@@ -816,20 +849,20 @@ button {
   align-self: flex-end;
   background: #1e1919;
   color: #fef9ea;
-  border-radius: 12px 12px 4px 12px;
+  border-radius: var(--radius-sm) var(--radius-sm) 4px var(--radius-sm);
 }
 
 .operator-bubble {
   align-self: flex-start;
   background: #f0e8d8;
   color: #1e1919;
-  border-radius: 12px 12px 12px 4px;
+  border-radius: var(--radius-sm) var(--radius-sm) var(--radius-sm) 4px;
 }
 
 /* AI panel animation elements */
 .ai-working {
   border: 0.5px solid #574d44;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   background: #fff;
   padding: 15px;
 }
@@ -873,7 +906,7 @@ button {
 
 .ai-response-box {
   border: 0.5px solid #574d44;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   background: #fff;
   padding: 15px;
 }
@@ -901,7 +934,7 @@ button {
   justify-content: center;
   padding: 8px 16px;
   border: 0;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: #10f;
   color: #fff;
   font-size: 14px;
@@ -919,7 +952,7 @@ button {
 .hero-cta {
   padding: 30px 50px;
   border: 5px solid #1e1919;
-  border-radius: 30px;
+  border-radius: var(--radius-lg);
   font-size: 40px;
   font-weight: 400;
 }
@@ -1020,8 +1053,8 @@ button {
   position: absolute;
   width: 361px;
   height: 191px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
+  box-shadow: 0 1px 5px var(--shadow-black-15);
+  border-radius: var(--radius-2xs);
   overflow: hidden;
 }
 
@@ -1051,8 +1084,8 @@ button {
   gap: 10px;
   min-height: 70px;
   padding: 10px 12px;
-  border-radius: 15px;
-  border: 0.5px solid rgba(87, 77, 68, 0.25);
+  border-radius: var(--radius-s);
+  border: 0.5px solid var(--border-warm);
   background: #fef9ea;
 }
 
@@ -1061,7 +1094,7 @@ button {
   place-items: center;
   width: 50px;
   height: 50px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: #1e1919;
   overflow: hidden;
   font-weight: 800;
@@ -1102,7 +1135,7 @@ button {
   place-items: center;
   width: 20px;
   height: 20px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: #00ae59;
   color: #fff;
   font-size: 12px;
@@ -1122,7 +1155,7 @@ button {
   background: #1e1919;
   color: #fef9ea;
   padding: 20px 25px;
-  border-radius: 20px;
+  border-radius: var(--radius-m);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 20px;
   line-height: 1.2;
@@ -1156,7 +1189,7 @@ button {
   gap: 10px;
   align-items: flex-start;
   background: #f7f6f5;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   padding: 6px 8px;
 }
 
@@ -1198,7 +1231,7 @@ button {
 .bar-time {
   width: 20px;
   height: 8px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   background: #efedea;
   flex-shrink: 0;
 }
@@ -1236,8 +1269,8 @@ button {
   place-items: center;
   width: 65px;
   height: 68px;
-  border-radius: 10px;
-  box-shadow: 0 3px 4px rgba(31, 25, 20, 0.15);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-xs);
   overflow: hidden;
 }
 
@@ -1360,7 +1393,7 @@ img.ai-bot-icon {
   gap: 10px;
   padding: 9px 22px;
   border: 1px solid #e8e4db;
-  border-radius: 15px;
+  border-radius: var(--radius-s);
   background: #fff;
 }
 
@@ -1399,7 +1432,7 @@ img.ai-bot-icon {
   place-items: center;
   width: 100px;
   height: 100px;
-  border-radius: 20px;
+  border-radius: var(--radius-m);
   border: 2px solid #e8e4db;
   background: #f7f6f5;
 }
@@ -1411,7 +1444,7 @@ img.ai-bot-icon {
 
 .integration-connector {
   position: absolute;
-  border-color: rgba(87, 77, 68, 0.28);
+  border-color: var(--border-warm-hover);
 }
 
 .connector-top {
@@ -1419,8 +1452,8 @@ img.ai-bot-icon {
   top: 95px;
   width: 54px;
   height: 85px;
-  border-left: 3px solid rgba(87, 77, 68, 0.28);
-  border-top: 3px solid rgba(87, 77, 68, 0.28);
+  border-left: 3px solid var(--border-warm-hover);
+  border-top: 3px solid var(--border-warm-hover);
   border-top-left-radius: 18px;
 }
 
@@ -1428,7 +1461,7 @@ img.ai-bot-icon {
   left: 179px;
   top: 231px;
   width: 64px;
-  border-top: 3px solid rgba(87, 77, 68, 0.28);
+  border-top: 3px solid var(--border-warm-hover);
 }
 
 .integration-stack {
@@ -1446,11 +1479,11 @@ img.ai-bot-icon {
   height: 75px;
   padding: 0 18px;
   margin-left: -16px;
-  border-radius: 20px;
+  border-radius: var(--radius-m);
   font-size: 24px;
   line-height: 1;
   font-weight: 700;
-  box-shadow: 0 3px 4px rgba(31, 25, 20, 0.15);
+  box-shadow: var(--shadow-xs);
 }
 
 .crm-pill:first-child {
@@ -1531,11 +1564,11 @@ img.ai-bot-icon {
   font-size: 40px;
   font-weight: 400;
   padding: 25px 40px;
-  border-radius: 25px;
+  border-radius: var(--radius-l);
 }
 
 .section-cta:hover {
-  box-shadow: 0 8px 24px rgba(30, 25, 25, 0.25);
+  box-shadow: var(--shadow-md);
 }
 
 .section-cta:active {
@@ -1560,7 +1593,7 @@ img.ai-bot-icon {
 .case-tabs button {
   border: 0;
   background: transparent;
-  border-radius: 20px;
+  border-radius: var(--radius-m);
   padding: 15px 20px;
   font-size: 25px;
   line-height: 1;
@@ -1569,13 +1602,13 @@ img.ai-bot-icon {
 }
 
 .case-tabs button:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-white-60);
 }
 
 .case-tabs button.active {
   background: #fff;
   border-radius: var(--radius-pill);
-  box-shadow: 0 1px 3px rgba(31, 25, 20, 0.2);
+  box-shadow: var(--shadow-2xs);
   font-weight: 500;
 }
 
@@ -1667,7 +1700,7 @@ img.ai-bot-icon {
 .billing-tabs button {
   border: 0;
   padding: 15px 20px;
-  border-radius: 20px;
+  border-radius: var(--radius-m);
   background: transparent;
   font-size: 25px;
   line-height: 1;
@@ -1676,7 +1709,7 @@ img.ai-bot-icon {
 }
 
 .billing-tabs button:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-white-60);
 }
 
 .billing-tabs button:active {
@@ -1692,7 +1725,7 @@ img.ai-bot-icon {
 .billing-tabs button.active {
   background: #fff;
   border-radius: var(--radius-pill);
-  box-shadow: 0 1px 3px rgba(31, 25, 20, 0.2);
+  box-shadow: var(--shadow-2xs);
   font-weight: 500;
 }
 
@@ -1707,7 +1740,7 @@ img.ai-bot-icon {
 
 .pricing-column {
   background: #fff;
-  border-radius: 25px;
+  border-radius: var(--radius-l);
   overflow: hidden;
   padding: 0 25px 30px;
   height: 100%;
@@ -1724,7 +1757,7 @@ img.ai-bot-icon {
 }
 
 .price-row {
-  border-radius: 20px;
+  border-radius: var(--radius-m);
   background: var(--strict-light);
   border: 1px solid #efedea;
   padding: 15px;
@@ -1754,7 +1787,7 @@ img.ai-bot-icon {
 .switch {
   width: 51px;
   height: 31px;
-  border-radius: 100px;
+  border-radius: var(--radius-pill);
   border: 0;
   cursor: pointer;
   position: relative;
@@ -1771,7 +1804,7 @@ img.ai-bot-icon {
   position: absolute;
   left: 2px;
   top: 2px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 8px var(--shadow-black-15);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -1845,7 +1878,7 @@ img.ai-bot-icon {
 
 .summary {
   background: #fff;
-  border-radius: 25px;
+  border-radius: var(--radius-l);
   padding: 0 25px 15px;
   position: relative;
   overflow: hidden;
@@ -1878,7 +1911,7 @@ img.ai-bot-icon {
   width: 100%;
   margin-top: 20px;
   border: 1px solid #1e1919;
-  border-radius: 15px;
+  border-radius: var(--radius-s);
   background: #1e1919;
   color: #fef9ea;
   font-size: 20px;
@@ -1891,7 +1924,7 @@ img.ai-bot-icon {
 
 .total-btn:hover {
   background: #333;
-  box-shadow: 0 4px 12px rgba(30, 25, 25, 0.25);
+  box-shadow: var(--shadow-sm);
 }
 
 .total-btn:active {
@@ -1917,7 +1950,7 @@ img.ai-bot-icon {
 
 .corp-shell {
   position: relative;
-  border-radius: 40px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background: #000;
   min-height: 982px;
@@ -1966,7 +1999,7 @@ img.ai-bot-icon {
   top: 0;
   width: 1205px;
   height: 982px;
-  border-radius: 1000px;
+  border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
@@ -2008,8 +2041,8 @@ img.ai-bot-icon {
   font-weight: 500;
   line-height: 1.1;
   padding: 20px 30px;
-  border-radius: 15px;
-  border: 1px solid rgba(87, 77, 68, 0.25);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--border-warm);
   background: linear-gradient(180deg, rgba(12, 12, 12, 0.8), rgba(0, 0, 0, 0.8));
   box-shadow: 0px 3px 8px rgba(31, 25, 20, 0.12);
   animation: tagFloat 6s ease-in-out infinite;
@@ -2185,7 +2218,7 @@ img.ai-bot-icon {
 .footer-grid a {
   display: block;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   font-size: 25px;
   line-height: 1.1;
   transition: background 0.15s ease;
@@ -2216,7 +2249,7 @@ img.ai-bot-icon {
 .registry-badge img {
   width: 46px;
   height: 46px;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   object-fit: cover;
 }
 
@@ -2258,7 +2291,7 @@ img.ai-bot-icon {
 .status {
   background: #1e1919;
   color: #fef9ea;
-  border-radius: 10px;
+  border-radius: var(--radius-xs);
   padding: 8px 10px;
   height: 46px;
   display: inline-flex;
