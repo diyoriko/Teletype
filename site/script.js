@@ -52,7 +52,7 @@ const integrationText = document.querySelector('.integration-cycle-text');
 const integrationIcon = document.querySelector('.integration-cycle-icon');
 if (integrationText && integrationIcon) {
   const labels = [
-    { text: 'Новый диалог', icon: './assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg', bg: '#3490ec' },
+    { text: 'Новый диалог', icon: './assets/figma/icon-new-dialog.svg', bg: '#3490ec' },
     { text: 'Лид с Авито', icon: './assets/figma/icon-avito-card.svg', bg: '#fff' },
     { text: 'Заказ с сайта', icon: './assets/figma/icon-whatsapp.svg', bg: '#25d366' },
     { text: 'SMS от клиента', icon: './assets/figma/icon-viber.svg', bg: '#7360f2' }
@@ -297,7 +297,7 @@ const channelData = [
     active: true,
     qty: 1,
     hasQty: true,
-    icon: "./assets/figma/eb659d4a-bb18-4a38-86eb-6ec26edc1c41.svg",
+    icon: "./assets/figma/icon-whatsapp.svg",
   },
   {
     id: "vk",
@@ -306,7 +306,7 @@ const channelData = [
     active: true,
     qty: 1,
     hasQty: true,
-    icon: "./assets/figma/85c88f6b-5ce7-4402-a9be-647870c3e60b.svg",
+    icon: "./assets/figma/icon-vk.svg",
   },
   {
     id: "chat",
@@ -322,21 +322,21 @@ const channelData = [
     label: "MAX",
     price: 4500,
     active: false,
-    icon: "./assets/figma/bca36164-c642-4cf2-9e89-eb72cf41ec88.svg",
+    icon: "./assets/figma/icon-max.png",
   },
   {
     id: "mail",
     label: "Почта",
     price: 660,
     active: false,
-    icon: "./assets/figma/d4cbd91f-93e5-4518-832d-3541e2e230a5.svg",
+    icon: "./assets/figma/icon-mail.png",
   },
   {
     id: "tg",
     label: "Telegram",
     price: 4500,
     active: false,
-    icon: "./assets/figma/b5b6f9df-b75e-4c70-8eab-0f5c0cdf6812.svg",
+    icon: "./assets/figma/icon-tg-card.svg",
   },
 ];
 
