@@ -1,0 +1,22 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 73 76.4" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="SMS" filter="url(#filter0_d_0_461)">
+<rect x="4" y="1" width="65" height="68.4" rx="10" fill="url(#paint0_linear_0_461)" shape-rendering="crispEdges"/>
+<path id="&#244;&#128;&#140;&#165;" d="M22.3638 55.1054C20.8408 55.1054 20.2854 53.9946 21.235 52.8121C21.9696 51.8625 23.6538 49.9454 24.7646 48.0821C24.9796 47.67 24.89 47.4013 24.46 47.1683C18.3683 43.8358 15 38.4967 15 32.6917C15 23.0525 24.5675 15.2946 36.5 15.2946C48.4325 15.2946 58 23.0525 58 32.6917C58 43.4417 47.7696 50.0708 34.7979 50.0888C34.6725 50.0888 34.4933 50.0888 34.2783 50.0708C33.92 50.0708 33.6154 50.1604 33.2033 50.4292C29.6558 52.9196 24.6033 55.1054 22.3638 55.1054Z" fill="var(--fill-0, white)"/>
+</g>
+<defs>
+<filter id="filter0_d_0_461" x="0" y="0" width="73" height="76.4" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="3"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.0980392 0 0 0 0 0.0784314 0 0 0 0.15 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_461"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_461" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_461" x1="36.5" y1="1" x2="36.5" y2="69.4" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5BF675"/>
+<stop offset="1" stop-color="#0CBD2A"/>
+</linearGradient>
+</defs>
+</svg>
