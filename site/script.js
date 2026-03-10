@@ -322,14 +322,14 @@ const channelData = [
     label: "MAX",
     price: 4500,
     active: false,
-    icon: "./assets/figma/icon-max.png",
+    icon: "./assets/figma/icon-max.svg",
   },
   {
     id: "mail",
     label: "Почта",
     price: 660,
     active: false,
-    icon: "./assets/figma/icon-mail.png",
+    icon: "./assets/figma/icon-mail.svg",
   },
   {
     id: "tg",

@@ -1265,8 +1265,8 @@ button {
   position: absolute;
   inset: 0;
   background:
-    url('./assets/figma/grid-h.png') center / 100% 100%,
-    url('./assets/figma/grid-v.png') center / 100% 100%;
+    url('./assets/figma/grid-h.svg') center / 100% 100%,
+    url('./assets/figma/grid-v.svg') center / 100% 100%;
   mix-blend-mode: multiply;
   opacity: 0.5;
 }
@@ -1558,7 +1558,7 @@ img.ai-bot-icon {
   content: '';
   position: absolute;
   inset: -50%;
-  background: url('./assets/figma/ai-bg.png') center / contain no-repeat;
+  background: url('./assets/figma/ai-bg.svg') center / contain no-repeat;
   opacity: 0.15;
   pointer-events: none;
 }
