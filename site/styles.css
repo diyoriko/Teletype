@@ -1476,14 +1476,18 @@ img.ai-bot-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 75px;
   height: 75px;
-  padding: 0 18px;
-  margin-left: -16px;
+  padding: 10px;
+  margin-left: -40px;
   border-radius: var(--radius-m);
-  font-size: 24px;
-  line-height: 1;
+  font-size: 13px;
+  line-height: 0.85;
   font-weight: 700;
   box-shadow: var(--shadow-xs);
+  overflow: hidden;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .crm-pill:first-child {
@@ -1497,23 +1501,31 @@ img.ai-bot-icon {
 }
 
 .crm-pill.rose {
-  background: #e92b69;
+  background: #2855b0;
   color: #fff;
 }
 
 .crm-pill.cyan {
-  background: #2b5cd2;
+  background: #2855b0;
   color: #fff;
 }
 
 .crm-pill.blue {
-  background: #2aa7df;
+  background: #0281c2;
   color: #fff;
 }
 
 .crm-pill.dark {
+  width: 90px;
+  height: 90px;
+  padding: 12px;
+  margin-left: -40px;
+  border-radius: 24px;
   background: #1e1919;
   color: #fff;
+  font-size: 24px;
+  line-height: 0.8;
+  box-shadow: 0 3.6px 4.8px rgba(0, 0, 0, 0.15);
 }
 
 .product-integrations h3 {
@@ -2193,7 +2205,8 @@ img.ai-bot-icon {
 }
 
 .footer-top img {
-  width: 222px;
+  width: auto;
+  height: 40px;
 }
 
 .footer-top p {
