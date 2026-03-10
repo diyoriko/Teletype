@@ -147,11 +147,11 @@ button {
   display: flex;
   align-items: center;
   gap: 50px;
-  padding: 12px 30px;
+  padding: 10px 30px;
   border: 1px solid var(--border-warm);
   border-radius: var(--radius-pill);
   background: var(--bg-light-75);
-  min-height: 74px;
+  height: 60px;
 }
 
 .brand img {
