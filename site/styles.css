@@ -299,7 +299,8 @@ button {
   padding: 20px 25px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-size: 30px;
 }
 
 .btn-light:hover {
@@ -328,6 +329,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 100px;
 }
 
 .badge {
@@ -1623,8 +1625,8 @@ img.ai-bot-icon {
   background: transparent;
   border-radius: var(--radius-m);
   padding: 15px 20px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 400;
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out, border-radius 0.2s ease-out;
@@ -1731,8 +1733,8 @@ img.ai-bot-icon {
   padding: 15px 20px;
   border-radius: var(--radius-m);
   background: transparent;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 400;
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -2243,8 +2245,8 @@ img.ai-bot-icon {
 
 .footer-grid h4 {
   margin: 0 0 10px;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 500;
   line-height: 1.1;
 }
 
@@ -2252,7 +2254,7 @@ img.ai-bot-icon {
   display: block;
   padding: 8px 10px;
   border-radius: var(--radius-xs);
-  font-size: 18px;
+  font-size: 25px;
   line-height: 1.1;
   transition: background 0.15s ease;
 }
