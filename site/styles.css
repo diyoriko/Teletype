@@ -67,6 +67,8 @@
   --shadow-md: 0 8px 24px var(--shadow-dark-25);
   --shadow-lg: 0 10px 40px var(--shadow-warm);
   --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --ai-purple: #10f;
+  --service-green: #00ae59;
 }
 
 * {
@@ -734,7 +736,7 @@ button {
 }
 
 .ai-tab.active {
-  color: #10f;
+  color: var(--ai-purple);
 }
 
 .ai-icon {
@@ -749,7 +751,7 @@ button {
   width: 132px;
   height: 3px;
   border-radius: var(--radius-pill);
-  background: #10f;
+  background: var(--ai-purple);
 }
 
 .ai-content {
@@ -921,7 +923,7 @@ button {
   gap: 5px;
   font-size: 16px;
   font-weight: 500;
-  color: #10f;
+  color: var(--ai-purple);
   margin-bottom: 10px;
 }
 
@@ -939,7 +941,7 @@ button {
   padding: 8px 16px;
   border: 0;
   border-radius: var(--radius-pill);
-  background: #10f;
+  background: var(--ai-purple);
   color: #fff;
   font-size: 14px;
   font-weight: 500;
@@ -1121,7 +1123,7 @@ button {
 }
 
 .service-meta span {
-  color: #00ae59;
+  color: var(--service-green);
   font-size: 12px;
   line-height: 1;
   font-weight: 500;
@@ -1140,7 +1142,7 @@ button {
   width: 20px;
   height: 20px;
   border-radius: var(--radius-pill);
-  background: #00ae59;
+  background: var(--service-green);
   color: #fff;
   font-size: 12px;
   line-height: 1;

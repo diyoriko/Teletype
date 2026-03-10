@@ -53,14 +53,14 @@ const integrationIcon = document.querySelector('.integration-cycle-icon');
 if (integrationText && integrationIcon) {
   const labels = [
     { text: 'Новый диалог', icon: './assets/figma/32aa6410-d7bd-49d4-9b44-193da400b403.svg', bg: '#3490ec' },
-    { text: 'Лид с Авито', icon: './assets/figma/icon-avito.svg', bg: '#fff' },
-    { text: 'Заказ с сайта', icon: './assets/figma/icon-web.svg', bg: 'transparent' },
-    { text: 'SMS от клиента', icon: './assets/figma/icon-sms.svg', bg: 'transparent' }
+    { text: 'Лид с Авито', icon: './assets/figma/icon-avito-card.svg', bg: '#fff' },
+    { text: 'Заказ с сайта', icon: './assets/figma/icon-whatsapp.svg', bg: '#25d366' },
+    { text: 'SMS от клиента', icon: './assets/figma/icon-viber.svg', bg: '#7360f2' }
   ];
   let currentLabelIndex = 0;
   const iconWrap = document.querySelector('.integration-icon-wrap');
 
-  setInterval(() => {
+  const integrationInterval = setInterval(() => {
     currentLabelIndex = (currentLabelIndex + 1) % labels.length;
     const item = labels[currentLabelIndex];
 
@@ -170,8 +170,12 @@ if (caseTabs && caseGrid) {
     if (!btn) return;
 
     const filter = btn.dataset.filter;
-    caseTabs.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+    caseTabs.querySelectorAll("button").forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+    });
     btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
 
     const cards = caseGrid.querySelectorAll(".case-card");
     cards.forEach((card) => {
@@ -460,8 +464,12 @@ if (billingTabs) {
     const btn = event.target.closest("button[data-plan]");
     if (!btn) return;
     currentPlan = btn.dataset.plan;
-    billingTabs.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+    billingTabs.querySelectorAll("button").forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+    });
     btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
     renderPricing();
   });
 }

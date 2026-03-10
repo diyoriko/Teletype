@@ -78,8 +78,8 @@
                 <div class="mockup-head">
                   <h3>Flora Delivery</h3>
                   <div class="mockup-head-icons">
-                    <span class="icon-btn" role="button" aria-label="Поиск">⌕</span>
-                    <span class="icon-btn" role="button" aria-label="Создать диалог">+</span>
+                    <span class="icon-btn" role="button" tabindex="0" aria-label="Поиск">⌕</span>
+                    <span class="icon-btn" role="button" tabindex="0" aria-label="Создать диалог">+</span>
                   </div>
                 </div>
                 <ul>
@@ -197,7 +197,7 @@
                     <div class="composer-top"><span>Ответ ▾</span></div>
                     <div class="composer-input" id="composer-input">|</div>
                     <div class="composer-actions">
-                      <span class="composer-emoji" role="button" aria-label="Эмодзи">◉</span>
+                      <span class="composer-emoji" role="button" tabindex="0" aria-label="Эмодзи">◉</span>
                       <button class="btn-send">Отправить</button>
                     </div>
                   </div>
@@ -391,11 +391,11 @@
         <div class="container">
           <h2>Телетайп подходит командам<br />от стартапов до корпораций</h2>
           <div class="case-tabs" data-case-tabs role="tablist" aria-label="Фильтр по отраслям">
-            <button class="active" data-filter="all">Все</button>
-            <button data-filter="saas">SaaS</button>
-            <button data-filter="retail">Ритейл</button>
-            <button data-filter="store">Онлайн-магазины</button>
-            <button data-filter="delivery">Доставка</button>
+            <button class="active" role="tab" aria-selected="true" data-filter="all">Все</button>
+            <button role="tab" aria-selected="false" data-filter="saas">SaaS</button>
+            <button role="tab" aria-selected="false" data-filter="retail">Ритейл</button>
+            <button role="tab" aria-selected="false" data-filter="store">Онлайн-магазины</button>
+            <button role="tab" aria-selected="false" data-filter="delivery">Доставка</button>
             <button data-filter="travel">Путешествия</button>
             <button data-filter="health">Здоровье и фитнес</button>
             <button data-filter="edu">Образование</button>
@@ -459,9 +459,9 @@
         <div class="container">
           <h2>Цена Телетайпа <span>зависит от набора функций и количества каналов</span></h2>
           <div class="billing-tabs" data-billing-tabs role="tablist" aria-label="Период оплаты">
-            <button class="active" data-plan="month">Месяц</button>
-            <button data-plan="quarter">3 месяца</button>
-            <button data-plan="year">Год</button>
+            <button class="active" role="tab" aria-selected="true" data-plan="month">Месяц</button>
+            <button role="tab" aria-selected="false" data-plan="quarter">3 месяца</button>
+            <button role="tab" aria-selected="false" data-plan="year">Год</button>
           </div>
 
           <div class="pricing-layout">
