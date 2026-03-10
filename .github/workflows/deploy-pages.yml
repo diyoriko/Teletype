@@ -33,7 +33,7 @@ jobs:
           rm -rf _site
           mkdir -p _site _site/sandbox
           git archive origin/teletype-main site | tar -x -C _site --strip-components=1
-          git archive origin/teletype-sandbox site | tar -x -C _site/sandbox
+          git archive origin/teletype-sandbox site | tar -x -C _site/sandbox --strip-components=1
           touch _site/.nojekyll
 
       - name: Upload artifact
