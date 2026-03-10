@@ -407,7 +407,7 @@ button {
   padding: 15px 15px 10px;
 }
 
-.mockup-head h3 {
+.mockup-head .mockup-title {
   margin: 0;
   font-size: 21px;
   line-height: 1.2;
